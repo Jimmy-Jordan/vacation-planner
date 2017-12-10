@@ -11,8 +11,8 @@ class Wrapper:
 	BASE_URL = "https://api-dev.fareportallabs.com/air/api/"
 
 	def __init__(self, username, password):
-		self.username = username
-		self.password = password
+		self.username = APIAuthentication.USERNAME
+		self.password = APIAuthentication.PASSWORD
 		
 		
 	def authorization_preperation(self):
