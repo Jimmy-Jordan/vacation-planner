@@ -9,15 +9,13 @@ from planner.wrapper import Wrapper
 from planner.serializers import FlightSearchSerializer
 from planner.forms import SubmitFlightSearch
 
+class FlightSearchAPIListView():
 
-
-class FlightListView(generics.ListCreateAPIView):
+class SavedFlightListView(generics.ListCreateAPIView):
 	'''
-	Separate table for results of flight search?
-	Set up permissions to allow non-users to perform flight searches, 
-	but not save? Generic permissions probably fine
+	Change permission to only be if authenticated?
 	'''
-	queryset = .objects.all()
+	queryset = SavedFlightSearch.objects.all()
 	serializer_class = FlightSearchSerializer
 	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
@@ -25,7 +23,6 @@ class FlightListView(generics.ListCreateAPIView):
 		serializer.save(user=self.request.user)	
 
 class SavedFlightSearch():
-
 
 	#Incoporate Wrapper
 	def save_flight(request):

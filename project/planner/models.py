@@ -12,7 +12,7 @@ class SavedFlightSearch(models.Model):
 		(ONEWAY, 'ONEWAY'),
 	)
 
-	response_version = models.CharField(default="VERSION41")
+	response_version = models.CharField(max_length=9, default="VERSION41")
 	destination = models.CharField(max_length=4)
 	origin = models.CharField(max_length=4)
 	quantity = models.PositiveIntegerField()
@@ -22,7 +22,7 @@ class SavedFlightSearch(models.Model):
 	)
 	departure_date = models.DateField()
 	return_date = models.DateField()
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete=models.PROTECT)
 
 #class RecreationalInterests(models.Model):
 
