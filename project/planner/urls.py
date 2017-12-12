@@ -15,16 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from user import views
+from planner import views
 
-app_name = 'user'
+app_name = 'planner'
 
 urlpatterns = [
-    url(r'^$', views.Index.as_view(), name="index"),
-    url(r'^create$', views.Create.as_view(), name="create"),
-    url(r'^login$', views.LoginView.as_view(), name='login'),
-    url(r'^logout$', views.Logout.as_view(), name='logout'),
-]
 
+    url(r'^flights/search$', views.FlightSearchAPIListView.as_view(), name="flight-search"),
+    # url(r'^flights/savedsearch/(?P<pk>[0-9]+)$', views.SavedFlightSearch.as_view(), name="flight-list"),
+    # url(r'^bars/(?P<pk>[0-9]+)$', views.BarDetail.as_view(), name="bar-detail"),
+    # url(r'^bars/(?P<pk>[0-9]+)/drinks$', views.BarDrinksListView.as_view(), name="drinks"),
+    # url(r'^drinks/(?P<pk>[0-9]+)$', views.DrinkDetail.as_view(), name="drink-detail"),
+    # url(r'^bars/(?P<pk>[0-9]+)/votes$', views.BarVoteListView.as_view(), name="bar-votes"),
+    # url(r'^drinks/(?P<pk>[0-9]+)/votes$', views.DrinkVoteListView.as_view(), name="drink-votes"),
+]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

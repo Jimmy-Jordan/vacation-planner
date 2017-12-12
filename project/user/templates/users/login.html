@@ -1,14 +1,14 @@
-{% extends 'user/_base.html' %}
+{% extends 'users/_base.html' %}
 
 {% block title %}Login Page {% endblock title %}
 
 {% block header %} 
-    <a href="{% url 'user:create' %}"> Register </a>
+    <a href="{% url 'users:create' %}"> Register </a>
 {% endblock header %}
 
 {% block main %}
 <div>
-    <form action="{% url 'user:login' %}" method="POST">
+    <form action="{% url 'users:login' %}" method="POST">
          {{form}}  
          {% csrf_token %}
         <input type="submit" value="Login"/>

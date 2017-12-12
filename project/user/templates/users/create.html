@@ -1,4 +1,4 @@
-{% extends 'user/_base.html' %}
+{% extends 'users/_base.html' %}
 
 {% block title %}{% endblock title %}
 
@@ -10,7 +10,7 @@
 
 {% block main %}
 	<p>Create User</p>
-	<form action="{% url 'user:create' %}" method="POST">
+	<form action="{% url 'users:create' %}" method="POST">
 		{% csrf_token %}
 		{{ form }}
 		<input type="submit" value="Submit"/>

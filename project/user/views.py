@@ -21,10 +21,10 @@ class Index(View):
 		users = User.objects.all()
 
 		context = {
-			'user':users
+			'users':users
 		}
 
-		return render(request, 'user/index.html', context)
+		return render(request, 'users/index.html', context)
 
 class LoginView(View):
 
@@ -36,7 +36,7 @@ class LoginView(View):
 		}
 
 
-		return render(request, 'user/login.html', context)
+		return render(request, 'users/login.html', context)
 
 	def post(self, request):
 
@@ -50,9 +50,8 @@ class LoginView(View):
 			user = form.get_user()
 			login(request, user)
 			return redirect(settings.LOGIN_SUCCESS_URL)
-
 		else:
-			return render(request, 'user/login.html', context)
+			return render(request, 'users/login.html', context)
 			
 
 
@@ -62,7 +61,7 @@ class Logout(View):
 	def post(self, request):
 
 		logout(request)
-		return redirect('user:index')
+		return redirect('users:index')
 
 class Create(View):
 
@@ -75,7 +74,7 @@ class Create(View):
 			'form': form
 		}
 
-		return render(request, 'user/create.html', context)
+		return render(request, 'users/create.html', context)
 
 	def post(self, request):
 
@@ -87,8 +86,8 @@ class Create(View):
 
 		if form.is_valid():
 			user = form.save()
-			return redirect('user:index')
+			return redirect('users:index')
 
 		else:
-			return render(request, 'user/create.html', context)
+			return render(request, 'users/create.html', context)
 
