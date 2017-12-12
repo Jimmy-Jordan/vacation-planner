@@ -9,35 +9,31 @@ from planner.wrapper import Wrapper
 from planner.serializers import FlightSearchSerializer
 from planner.forms import SubmitFlightSearch
 
-class FlightSearchAPIListView():
+class FlightSearchAPIListView(generics.ListAPIView):
+
+	serializer_class = FlightSearchSerializer
+	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+	def send_flight_data(request):
+
+		#Call the wrapper
+		#save the response in a variable
+		#parse the response for the data you want if needed (unlikely here)
+		#send the data to the browser
+		#cache the results if possible (do later)
+
 
 class SavedFlightListView(generics.ListCreateAPIView):
 	'''
 	Change permission to only be if authenticated?
 	'''
 	queryset = SavedFlightSearch.objects.all()
-	serializer_class = FlightSearchSerializer
+	serializer_class = SavedFlightSearchSerializer
 	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 	def perform_save(self, serializer):
 		serializer.save(user=self.request.user)	
 
-class SavedFlightSearch():
 
-	#Incoporate Wrapper
-	def save_flight(request):
-		if request.method == "POST":
-			form = SubmitFlightSearch(request.POST)
-			if form.is_valid():
-				url = form.cleaned_data['url']
-				r = requests.get('http://api.embed.ly/1/oembed?key=' + settings.EMBEDLY_KEY + '&url=' + url)
-				json = r.json()
-				serializer = FlightSearchSerializer(data=json)
-				if serializer.is_valid():
-					flight = serializer.save()
-					return render(request, 'embeds.html', {'embed': embed})
 
-		else:
-			form = SubmitFlightSearch()
-
-		return render(request, 'index.html', {'form': form})		
+			

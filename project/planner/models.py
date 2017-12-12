@@ -13,8 +13,8 @@ class SavedFlightSearch(models.Model):
 	)
 
 	response_version = models.CharField(max_length=9, default="VERSION41")
-	destination = models.CharField(max_length=4)
-	origin = models.CharField(max_length=4)
+	destination = models.CharField(max_length=3)
+	origin = models.CharField(max_length=3)
 	quantity = models.PositiveIntegerField()
 	#Through API max is 9 tickets I believe?
 	type_of_trip = models.CharField(
