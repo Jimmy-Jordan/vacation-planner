@@ -18,4 +18,10 @@ export default {
 			url: '/flights/' + flightId
 		});
 	},
-
+	createFlightSearch: function(data){
+		return axios({
+			method: 'post',
+			url: '/flights',
+			data: data
+		});
+	},
