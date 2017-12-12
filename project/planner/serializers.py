@@ -10,7 +10,7 @@ class FlightSearchSerializer(serializers.ModelSerializer):
 	)
 
     class Meta:
-        model = SavedSavedFlightSearch
+        model = SavedFlightSearch
         fields = [
         	'destination', 'origin', 'quantity', 'type_of_trip', 
         	'departure_date', 'return_date', 'id', 'user'

@@ -12,7 +12,7 @@ class SavedFlightSearch(models.Model):
 		(ONEWAY, 'ONEWAY'),
 	)
 
-	response_version = models.CharField(default="VERSION41")
+	response_version = models.CharField(default="VERSION41", max_length=10)
 	destination = models.CharField(max_length=4)
 	origin = models.CharField(max_length=4)
 	quantity = models.PositiveIntegerField()

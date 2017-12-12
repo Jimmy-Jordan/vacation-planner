@@ -21,7 +21,7 @@ app_name = 'planner'
 
 urlpatterns = [
     url(r'^flights$', views.FlightListView.as_view(), name="flight-list"),
-    url(r'^flights/savedsearch/(?P<pk>[0-9]+)$', views.SavedFlightSearch.as_view(), name="flight-list"),
+    # url(r'^flights/savedsearch/(?P<pk>[0-9]+)$', views.SavedFlightSearch.as_view(), name="flight-list")
     # url(r'^bars/(?P<pk>[0-9]+)$', views.BarDetail.as_view(), name="bar-detail"),
     # url(r'^bars/(?P<pk>[0-9]+)/drinks$', views.BarDrinksListView.as_view(), name="drinks"),
     # url(r'^drinks/(?P<pk>[0-9]+)$', views.DrinkDetail.as_view(), name="drink-detail"),

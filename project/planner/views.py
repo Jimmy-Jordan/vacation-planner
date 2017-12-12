@@ -11,18 +11,18 @@ from planner.forms import SubmitFlightSearch
 
 
 
-class FlightListView(generics.ListCreateAPIView):
-	'''
-	Separate table for results of flight search?
-	Set up permissions to allow non-users to perform flight searches, 
-	but not save? Generic permissions probably fine
-	'''
-	queryset = .objects.all()
-	serializer_class = FlightSearchSerializer
-	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+# class FlightListView(generics.ListCreateAPIView):
+# 	'''
+# 	Separate table for results of flight search?
+# 	Set up permissions to allow non-users to perform flight searches, 
+# 	but not save? Generic permissions probably fine
+# 	'''
+# 	queryset = .objects.all()
+# 	serializer_class = FlightSearchSerializer
+# 	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-	def perform_save(self, serializer):
-		serializer.save(user=self.request.user)	
+# 	def perform_save(self, serializer):
+# 		serializer.save(user=self.request.user)	
 
 class SavedFlightSearch():
 

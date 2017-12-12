@@ -19,13 +19,22 @@
 			<el-input v-model="arrival" placeholder="Flight Arrival"></el-input>
 		</el-form-item>
 
-		<el-form-item label="Status:">
+		<!-- <el-form-item label="Status:">
 			
-  			<el-radio v-model="status" label="1">One Way</el-radio>
-  			<el-radio v-model="status" label="2">Round Trip</el-radio>
+			<el-radio v-model="status" label="1">One Way</el-radio>
+			<el-radio v-model="status" label="2">Round Trip</el-radio>
 
 
-		</el-form-item>
+		</el-form-item> -->
+
+
+		<el-checkbox-group v-model="status">
+			<el-checkbox-button v-for="option in options" :label="option" :key="option">{{option}}</el-checkbox-button>
+		</el-checkbox-group>
+
+		<el-checkbox v-model="checked1">One Way</el-checkbox>
+		<el-checkbox v-model="checked2">Round Trip</el-checkbox>
+  
 		
 		<el-form-item>
 			<el-button type="primary" v-on:click="onSubmit($event, from, to, departure, arrival, quantity, status)">Create Flight Search</el-button>
@@ -35,6 +44,7 @@
 
 
 <script>
+	const options = ['One Way', 'Round Trip']
 export default {
 	name: 'create-flight-search',
 	data: function(){
@@ -44,7 +54,8 @@ export default {
 			departure: '',
 			arrival: '',
 			quantity: '',
-			status: ''
+			status: ['One Way'],
+			options: options
 
 		};
 	},

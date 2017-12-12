@@ -4,8 +4,8 @@
 			<ul>
 				<li 
 					is="flight-summary" 
-					v-for="item in flights" 
-					v-bind:flight="item">
+					v-for="flight in flights" 
+					v-bind:flight="flight">
 				</li>
 			</ul>
 			<el-pagination

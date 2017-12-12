@@ -6,7 +6,7 @@
 	>
 		<el-menu-item index="/">Events</el-menu-item>
 		<el-menu-item index="/profile">Profile</el-menu-item>
-		<el-menu-item index="/create-flight">Create </el-menu-item>
+		<el-menu-item index="/create-flight-search">Create Flight Search</el-menu-item>
 	</el-menu>
 </template>
 

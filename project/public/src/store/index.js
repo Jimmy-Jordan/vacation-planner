@@ -23,20 +23,20 @@ const store = new Vuex.Store({
 		// editEvent: function(state, payload){
 		// 	Object.assign(payload.obj, payload.data);
 		// },
-		createAttendee: function(state, payload){
-			payload.obj.attendees.push(payload.data);
-		},
-		editAttendee: function(state, payload){
-			Object.assign(payload.obj, payload.data);
-		},
-		deleteEvent: function(state, payload){
-			for (let idx = 0; idx < state.events.length; idx++){
-				if (state.events[idx].id === payload.target.id){
-					state.events.splice(idx, 1);
-					return;
-				}
-			}
-		}
+		// createAttendee: function(state, payload){
+		// 	payload.obj.attendees.push(payload.data);
+		// },
+		// editAttendee: function(state, payload){
+		// 	Object.assign(payload.obj, payload.data);
+		// },
+		// deleteEvent: function(state, payload){
+		// 	for (let idx = 0; idx < state.events.length; idx++){
+		// 		if (state.events[idx].id === payload.target.id){
+		// 			state.events.splice(idx, 1);
+		// 			return;
+		// 		}
+		// 	}
+		// }
 	},
 	actions: {
 		createFlightSearch: function(context, payload){
@@ -63,48 +63,51 @@ const store = new Vuex.Store({
 				});
 			});
 		},
-		deleteEvent: function(context, payload){
+		// deleteEvent: function(context, payload){
 			
-			return new Promise(function(resolve, reject){
-				api.deleteEvent(payload.event.id).then(function(){
-					context.commit("deleteEvent", {
-						target: payload.event
-					});
-				}).catch(function(){
-					reject();
-				});
-			});
-		},
-		createAttendee: function(context, payload){
-			return new Promise(function(resolve, reject){
-				api.createAttendee(payload.event.id, payload.data).then(function({request, data}){
-					context.commit("createAttendee", {
-						obj: payload.event,
-						data: data
-					});
-					resolve(data);
-				}).catch(function(){
-					reject();
-				});
-			});	
-		},
-		editAttendee: function(context, payload){
-			return new Promise(function(resolve, reject){	
-				api.editAttendee(payload.attendee.id, payload.data).then(function({request, data}){
-					context.commit("editAttendee", {
-						obj: payload.attendee,
-						data: data
-					});
-					resolve(data);
-				}).catch(function(){
-					reject();
-				});
-			});	
-		},
-		loadFlights: function(context){
+		// 	return new Promise(function(resolve, reject){
+		// 		api.deleteEvent(payload.event.id).then(function(){
+		// 			context.commit("deleteEvent", {
+		// 				target: payload.event
+		// 			});
+		// 		}).catch(function(){
+		// 			reject();
+		// 		});
+		// 	});
+		// },
+		// createAttendee: function(context, payload){
+		// 	return new Promise(function(resolve, reject){
+		// 		api.createAttendee(payload.event.id, payload.data).then(function({request, data}){
+		// 			context.commit("createAttendee", {
+		// 				obj: payload.event,
+		// 				data: data
+		// 			});
+		// 			resolve(data);
+		// 		}).catch(function(){
+		// 			reject();
+		// 		});
+		// 	});	
+		// },
+		// editAttendee: function(context, payload){
+		// 	return new Promise(function(resolve, reject){	
+		// 		api.editAttendee(payload.attendee.id, payload.data).then(function({request, data}){
+		// 			context.commit("editAttendee", {
+		// 				obj: payload.attendee,
+		// 				data: data
+		// 			});
+		// 			resolve(data);
+		// 		}).catch(function(){
+		// 			reject();
+		// 		});
+		// 	});	
+		// },
+		loadFlights: function(context, payload){
 			return new Promise(function(resolve, reject){			
 				api.getFlights().then(function({data,request}){
+					
+
 					context.commit("loadFlights", {
+						
 						"data": data
 					});
 					resolve(data);
