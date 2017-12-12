@@ -22,7 +22,7 @@ class SavedFlightSearch(models.Model):
 	)
 	departure_date = models.DateField()
 	return_date = models.DateField()
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, on_delete=models.PROTECT)
 
 #class RecreationalInterests(models.Model):
 
