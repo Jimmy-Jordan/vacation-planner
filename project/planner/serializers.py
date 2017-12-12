@@ -3,13 +3,13 @@ from planner.models import SavedFlightSearch
 
 
 class FlightSearchSerializer(serializers.Serializer):
-    response_version = models.CharField(max_length=9, default="VERSION41")
-    destination = models.CharField(max_length=3)
-    origin = models.CharField(max_length=3)
-    quantity = models.PositiveIntegerField()
-    type_of_trip = models.CharField(max_length=9)
-    departure_date = models.DateField()
-    return_date = models.DateField()    
+    response_version = serializers.CharField(max_length=9, default="VERSION41")
+    destination = serializers.CharField(max_length=3)
+    origin = serializers.CharField(max_length=3)
+    quantity = serializers.IntegerField()
+    type_of_trip = serializers.CharField(max_length=9)
+    departure_date = serializers.DateField()
+    return_date = serializers.DateField()    
 
 class SavedFlightSearchSerializer(serializers.ModelSerializer):
     
