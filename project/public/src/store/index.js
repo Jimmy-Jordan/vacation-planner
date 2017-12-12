@@ -50,19 +50,19 @@ const store = new Vuex.Store({
 			});
 			
 		},
-		editEvent: function(context, payload){
-			return new Promise(function(resolve, reject){
-				api.editEvent(payload.event.id, payload.data).then(function({request, data}){
-					context.commit("editEvent", {
-						obj: payload.event,
-						data: data
-					});
-					resolve();
-				}).catch(function(){
-					reject();
-				});
-			});
-		},
+		// editEvent: function(context, payload){
+		// 	return new Promise(function(resolve, reject){
+		// 		api.editEvent(payload.event.id, payload.data).then(function({request, data}){
+		// 			context.commit("editEvent", {
+		// 				obj: payload.event,
+		// 				data: data
+		// 			});
+		// 			resolve();
+		// 		}).catch(function(){
+		// 			reject();
+		// 		});
+		// 	});
+		// },
 		// deleteEvent: function(context, payload){
 			
 		// 	return new Promise(function(resolve, reject){

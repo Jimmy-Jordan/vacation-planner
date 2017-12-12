@@ -11,7 +11,7 @@ from planner.forms import SubmitFlightSearch
 
 
 
-# class FlightListView(generics.ListCreateAPIView):
+class FlightListView(generics.ListCreateAPIView):
 # 	'''
 # 	Separate table for results of flight search?
 # 	Set up permissions to allow non-users to perform flight searches, 

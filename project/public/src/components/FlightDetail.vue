@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<transition-group name="component-fade" mode="in-out">
-			<div v-bind:key="event.id">
-				<p>Title: {{event.title}}</p> 
-				<p>Description: {{event.description}}</p>
-				<p>Location: {{event.location}}</p>
+			<div v-bind:key="flight.id">
+				<p>Title: {{flight.title}}</p> 
+				<p>Description: {{flight.description}}</p>
+				<p>Location: {{flight.location}}</p>
 			</div>
 			
 			<edit-event 
