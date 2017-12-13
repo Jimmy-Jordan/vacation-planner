@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
+import pprint
 
 from rest_framework import generics, permissions
 from rest_framework.renderers import JSONRenderer
@@ -26,10 +27,10 @@ class FlightSearchAPIListView(View):
 
 
 	def get(self, request):
-		print(request)
-		print(dir(request))
-		print(request.body)
-		print(request.GET)
+		# print(request)
+		# print(dir(request))
+		# print(request.body)
+		# print(request.GET)
 		wrapper = Wrapper(
 			username = APIAuthentication.USERNAME, 
 			password = APIAuthentication.PASSWORD
@@ -39,9 +40,15 @@ class FlightSearchAPIListView(View):
 		if serializer.is_valid():
 			print(serializer.data)
 
+			flight_search_request = serializer.flight_search_parser()
+			response_version = serializer.response_parser()
+			# pp = pprint.PrettyPrinter()
+			# pp.pprint(json_obj)
+			# print(json_obj
+			print(serializer.data["response_version"], "YESSSSSSS")
+			search = wrapper.flight_availability_search(response_version, flight_search_request)
 
-			search = wrapper.flight_availability_search(serializer.data["response_version"], serializer.validated_data)
-			print("success",search)
+			print(search)
 			return JsonResponse(search)
 		else:
 			return JsonResponse(serializer.errors, status=405)

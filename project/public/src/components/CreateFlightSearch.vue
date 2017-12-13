@@ -25,8 +25,8 @@
 
 		<el-form-item label="Status:">
 			
-			<el-radio v-model="type_of_trip" label="1">One Way</el-radio>
-			<el-radio v-model="type_of_trip" label="2">Round Trip</el-radio>
+			<el-radio v-model="type_of_trip" label="ONEWAY">One Way</el-radio>
+			<el-radio v-model="type_of_trip" label="ROUNDTRIP">Round Trip</el-radio>
 
 
 		</el-form-item>
