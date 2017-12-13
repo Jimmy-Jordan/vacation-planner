@@ -3,7 +3,7 @@
 <template>
 	<el-form ref="form" v-on:submit.prevent="createFlightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">
 		<el-form-item label="From:">
-			<el-input v-model="origin" maxLength="3" placeholder="Flight From"></el-input>
+			<el-input v-model="origin" maxLength="3" placeholder="Enter 3 Letter Airport Code ex: EWR" ></el-input>
 		</el-form-item>
 
 		<el-form-item label="To:">
@@ -12,7 +12,10 @@
 		
 		<el-form-item label="Departure:">
 			<el-input type="date" v-model="departure_date" placeholder="Flight Departure"></el-input>
-			
+
+
+
+
 		</el-form-item>
 
 		<el-form-item label="Return:">

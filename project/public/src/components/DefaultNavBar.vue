@@ -4,9 +4,9 @@
 		:router="!!$router"
 		mode="vertical"
 	>
-		<el-menu-item index="/">Events</el-menu-item>
-		<el-menu-item index="/profile">Profile</el-menu-item>
-		<el-menu-item index="/create-flight-search">Create Flight Search</el-menu-item>
+		<el-menu-item index="/">Profile</el-menu-item>
+		<el-menu-item index="/profile">Flight Search</el-menu-item>
+		<el-menu-item index="/create-flight-search">Saved Flights</el-menu-item>
 	</el-menu>
 </template>
 
