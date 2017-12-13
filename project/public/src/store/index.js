@@ -12,11 +12,12 @@ const store = new Vuex.Store({
 	},
 	mutations: {
 		createFlightSearch: function(state, payload){
+			console.log(payload, "PAYYYYYLOADDDDD")
 			state.flights.push(payload);
 		},
-		loadFlights: function(state, payload){
-			Vue.set(state, 'flights', payload.data);
-		},
+		// loadFlights: function(state, payload){
+		// 	Vue.set(state, 'flights', payload.data);
+		// },
 		// loadAttendees: function(state, payload){
 		// 	Vue.set(payload.obj, 'attendees', payload.data);
 		// },

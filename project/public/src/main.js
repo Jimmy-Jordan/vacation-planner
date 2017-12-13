@@ -9,5 +9,8 @@ import components from './components/index.js';
 var app = new Vue({
 	el: '#app',
 	store: DataStore,
-	router: Router
+	router: Router,
+	data: {
+		flights: []
+	}
 });

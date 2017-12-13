@@ -8,15 +8,15 @@ export default {
 	getFlights: function(){
 		return axios({
 			method: 'get',
-			url: 'flights/'
+			url: 'flights/search'
 		});
 	},
-	getFlight: function(flightId){
-		return axios({
-			method: 'get',
-			url: 'flights/search/' + flightId
-		});
-	},
+	// getFlight: function(flightId){
+	// 	return axios({
+	// 		method: 'get',
+	// 		url: 'flights/search/' + flightId
+	// 	});
+	// },
 	createFlightSearch: function(data){
 		console.log(data)
 		return axios({

@@ -27,10 +27,7 @@ class FlightSearchAPIListView(View):
 
 
 	def get(self, request):
-		# print(request)
-		# print(dir(request))
-		# print(request.body)
-		# print(request.GET)
+
 		wrapper = Wrapper(
 			username = APIAuthentication.USERNAME, 
 			password = APIAuthentication.PASSWORD
@@ -45,13 +42,23 @@ class FlightSearchAPIListView(View):
 			# pp = pprint.PrettyPrinter()
 			# pp.pprint(json_obj)
 			# print(json_obj
-			print(serializer.data["response_version"], "YESSSSSSS")
+			print("got this far")
 			search = wrapper.flight_availability_search(response_version, flight_search_request)
 
+			print("are you kidding me")
 			print(search)
 			return JsonResponse(search)
 		else:
 			return JsonResponse(serializer.errors, status=405)
+
+	# def post(self, request):
+
+	# 	wrapper = Wrapper(
+	# 		username = APIAuthentication.USERNAME,
+	# 		password = APIAuthentication.PASSWORD
+	# 	)
+	# 	print(request.POST, "YAYYYYY-----------------------------------------------", request.body)
+	# 	serializer = FlightSearchSerializer(data=request.POST)
 
 
 # class SavedFlightListView(generics.ListCreateAPIView):

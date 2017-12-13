@@ -2,28 +2,28 @@
 
 <template>
 	<el-form ref="form" v-on:submit.prevent="createFlightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">
-		<el-form-item label="From:">
-			<el-input v-model="origin" maxLength="3" placeholder="Flight From"></el-input>
+		<el-form-item label="Origin:">
+			<el-input v-model="origin" maxLength="3" placeholder="Enter 3 letter airport code"></el-input>
 		</el-form-item>
 
-		<el-form-item label="To:">
-			<el-input v-model="destination" maxLength="3" placeholder="Flight To"></el-input>
+		<el-form-item label="Destination:">
+			<el-input v-model="destination" maxLength="3" placeholder="Enter 3 letter airport code"></el-input>
 		</el-form-item>
 		
-		<el-form-item label="Departure:">
+		<el-form-item label="Departure Date:">
 			<el-input type="date" v-model="departure_date" placeholder="Flight Departure"></el-input>
 			
 		</el-form-item>
 
-		<el-form-item label="Return:">
+		<el-form-item label="Return Date:">
 			<el-input type="date" v-model="return_date" placeholder="Flight Arrival"></el-input>
 		</el-form-item>
 
-		<el-form-item label="Quantity:">
+		<el-form-item label="Passengers:">
 			<el-input type="number" v-model="quantity" placeholder="Max: 9 people"></el-input>
 		</el-form-item>
 
-		<el-form-item label="Status:">
+		<el-form-item label="Type of Trip:">
 			
 			<el-radio v-model="type_of_trip" label="ONEWAY">One Way</el-radio>
 			<el-radio v-model="type_of_trip" label="ROUNDTRIP">Round Trip</el-radio>
