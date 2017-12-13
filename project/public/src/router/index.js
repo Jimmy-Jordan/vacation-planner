@@ -7,14 +7,14 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
 	routes: [
-		{
-			name: "flights",
-			path: "/",
-			components: {
-				"header": {"template": '<h2 class="align-center">Flight Collection</h2>'},
-				"aside": {"template": "<default-navbar></default-navbar>"},
-				"main": {"template": "<flight-collection></flight-collection>"}
-			},
+		// {
+		// 	name: "flights",
+		// 	path: "/",
+		// 	components: {
+		// 		"header": {"template": '<h2 class="align-center">Flight Collection</h2>'},
+		// 		"aside": {"template": "<default-navbar></default-navbar>"},
+		// 		"main": {"template": "<flight-collection></flight-collection>"}
+		// 	},
 			// beforeEnter: function(to, from, next){
 			// 	if (DataStore.getters.getFlights.length){
 			// 		next();
@@ -24,14 +24,18 @@ const router = new VueRouter({
 			// 		});
 			// 	}
 			// }
-		},
+		// },
 		{
 			name: "create-flight-search",
 			path: "/create-flight-search",
 			components: {
-				"header": {"template": '<h2 class="align-center"></h2>'},
+				"header": {"template": '<h2 class="align-center">Flight Search</h2>'},
 				"aside": {"template": "<default-navbar></default-navbar>"},
-				"main": {"template": "<create-flight-search></create-flight-search>"}
+				"main": {"template": `<div>
+				<create-flight-search></create-flight-search>
+				<flight-collection></flight-collection>
+				</div>`}
+
 			}
 		},
 		{

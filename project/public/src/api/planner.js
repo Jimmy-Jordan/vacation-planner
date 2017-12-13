@@ -11,12 +11,12 @@ export default {
 			url: 'flights/'
 		});
 	},
-	getFlight: function(flightId){
-		return axios({
-			method: 'get',
-			url: 'flights/search/' + flightId
-		});
-	},
+	// getFlight: function(flightId){
+	// 	return axios({
+	// 		method: 'get',
+	// 		url: 'flights/search/' + flightId
+	// 	});
+	// },
 	createFlightSearch: function(data){
 		console.log(data)
 		return axios({

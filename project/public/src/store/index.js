@@ -42,8 +42,19 @@ const store = new Vuex.Store({
 		createFlightSearch: function(context, payload){
 			return new Promise(function(resolve, reject){
 				api.createFlightSearch(payload.data).then(function({request,data}){
-					context.commit("createFlightSearch", data);
-					resolve();
+					// console.log(data)
+					// console.log(data['FlightResponse']['FpSearch_AirLowFaresRS']['CntKey'])
+					var flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
+					['OriginDestinationOptions']['InBoundOptions']['InBoundOption']
+					console.log(flight_segment)
+					for (let idx = 0; idx < flight_segment.length; idx++){
+						// if (data[idx] === flight_segment){
+							context.commit("createFlightSearch", flight_segment[idx]);
+							// console.log('hi')
+							resolve();
+						// }
+					}	
+						
 				}).catch(function(){
 					reject();
 				});

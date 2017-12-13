@@ -1,9 +1,10 @@
+import pprint
+
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
-import pprint
 
 from rest_framework import generics, permissions
 from rest_framework.renderers import JSONRenderer
@@ -14,7 +15,7 @@ from planner.serializers import FlightSearchSerializer
 from project.local_settings import APIAuthentication
 
 
-class FlightSearchAPIListView(View):
+class FlightSearchAPIView(View):
 
 		#Call the wrapper
 		#save the response in a variable
@@ -22,15 +23,8 @@ class FlightSearchAPIListView(View):
 		#send the data to the browser
 		#cache the results if possible (do later)
 
-	# serializer_class = FlightSearchSerializer
-	# permission_classes = (permissions.AllowAny,)
-
 
 	def get(self, request):
-		# print(request)
-		# print(dir(request))
-		# print(request.body)
-		# print(request.GET)
 		wrapper = Wrapper(
 			username = APIAuthentication.USERNAME, 
 			password = APIAuthentication.PASSWORD
@@ -42,16 +36,19 @@ class FlightSearchAPIListView(View):
 
 			flight_search_request = serializer.flight_search_parser()
 			response_version = serializer.response_parser()
-			# pp = pprint.PrettyPrinter()
-			# pp.pprint(json_obj)
-			# print(json_obj
-			print(serializer.data["response_version"], "YESSSSSSS")
+			# print(serializer.data["response_version"], "YESSSSSSS")
 			search = wrapper.flight_availability_search(response_version, flight_search_request)
-
-			print(search)
+			pp = pprint.PrettyPrinter(indent=2)
+			pp.pprint(search)
+			#print(search)
 			return JsonResponse(search)
 		else:
 			return JsonResponse(serializer.errors, status=405)
+
+
+
+
+
 
 
 # class SavedFlightListView(generics.ListCreateAPIView):

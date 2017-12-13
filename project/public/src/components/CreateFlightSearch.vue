@@ -1,26 +1,26 @@
 <!-- https://chenz24.github.io/vue-blu/#/en/components/form -->
 
 <template>
-	<el-form ref="form" v-on:submit.prevent="createFlightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">
-		<el-form-item label="From:">
-			<el-input v-model="origin" maxLength="3" placeholder="Flight From"></el-input>
+	<el-form ref="form" size="mini" label-width="120px" style="width: 40%;"v-on:submit.prevent="createFlightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">
+		<el-form-item label="Origin:">
+			<el-input v-model="origin" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
 		</el-form-item>
 
-		<el-form-item label="To:">
-			<el-input v-model="destination" maxLength="3" placeholder="Flight To"></el-input>
+		<el-form-item label="Destination:">
+			<el-input v-model="destination" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
 		</el-form-item>
 		
-		<el-form-item label="Departure:">
+		<el-form-item label="Departure Date:">
 			<el-input type="date" v-model="departure_date" placeholder="Flight Departure"></el-input>
 			
 		</el-form-item>
 
-		<el-form-item label="Return:">
+		<el-form-item label="Return Date:">
 			<el-input type="date" v-model="return_date" placeholder="Flight Arrival"></el-input>
 		</el-form-item>
 
-		<el-form-item label="Quantity:">
-			<el-input type="number" v-model="quantity" placeholder="Max: 9 people"></el-input>
+		<el-form-item label="Passengers:">
+			<el-input type="number" v-model="quantity" placeholder="Max: 9 People"></el-input>
 		</el-form-item>
 
 		<el-form-item label="Status:">
@@ -58,7 +58,7 @@ export default {
 			departure_date: '',
 			return_date: '',
 			quantity: 0,
-			type_of_trip: ''
+			type_of_trip: '',
 		};
 	},
 	methods:{
@@ -79,7 +79,7 @@ export default {
 			this.$set(this, "return_date", "");
 			this.$set(this, "quantity", "");
 			this.$set(this, "type_of_trip", "");
-
+			
 
 			
 		}
