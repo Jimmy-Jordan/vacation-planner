@@ -6,7 +6,7 @@ from project.local_settings import APIAuthentication
 
 
 
-class Wrapper:
+class Wrapper():
 	
 	BASE_URL = "https://api-dev.fareportallabs.com/air/api/"
 

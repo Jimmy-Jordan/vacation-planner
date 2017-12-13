@@ -15,21 +15,21 @@ const router = new VueRouter({
 				"aside": {"template": "<default-navbar></default-navbar>"},
 				"main": {"template": "<flight-collection></flight-collection>"}
 			},
-			beforeEnter: function(to, from, next){
-				if (DataStore.getters.getFlights.length){
-					next();
-				} else {	
-					DataStore.dispatch('loadFlights').then(function(){
-						next();
-					});
-				}
-			}
+			// beforeEnter: function(to, from, next){
+			// 	if (DataStore.getters.getFlights.length){
+			// 		next();
+			// 	} else {	
+			// 		DataStore.dispatch('loadFlights').then(function(){
+			// 			next();
+			// 		});
+			// 	}
+			// }
 		},
 		{
 			name: "create-flight-search",
 			path: "/create-flight-search",
 			components: {
-				"header": {"template": '<h2 class="align-center"><create-flight-search></create-flight-search></h2>'},
+				"header": {"template": '<h2 class="align-center"></h2>'},
 				"aside": {"template": "<default-navbar></default-navbar>"},
 				"main": {"template": "<create-flight-search></create-flight-search>"}
 			}

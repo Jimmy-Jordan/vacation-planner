@@ -20,5 +20,5 @@ urlpatterns = [
 	url('admin/', admin.site.urls),
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	url(r'^authenticate/', include('user.urls', namespace='user')),
-	url(r'^api/v0/planner', include('planner.urls', namespace='planner'))    
+	url(r'^api/v0/', include('planner.urls', namespace='planner'))    
 ]
