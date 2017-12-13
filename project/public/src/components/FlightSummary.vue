@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<p>City: {{flight.LocationCode}}</p> 
-		<p>Airline: {{flight.description}}</p>
-		<p>Price: {{flight.location}}</p>
+		<p>City: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p> 
+		<p>Airline: {{flight.Segmentid}}</p>
+		<p>Price: {{flight.Segmentid}}</p>
 		<router-link v-bind:to="{name: 'flight', params: {id: flight.id}}">Flight Detail</router-link>
 	</div>
 </template>

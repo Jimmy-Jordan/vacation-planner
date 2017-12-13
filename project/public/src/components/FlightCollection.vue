@@ -27,7 +27,7 @@ export default {
 	data: function(){
 		return {
 			current: parseInt(this.$route.query.page) || 1,
-			perPage: 3
+			perPage: 10
 		}
 	},
 	computed: {
