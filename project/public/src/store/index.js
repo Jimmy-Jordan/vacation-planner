@@ -8,12 +8,16 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	strict: true,
 	state: {
-		flights: [],
+		outboundFlights: [],
+		returnFlights: [],
 		tickets: {}
 	},
 	mutations: {
-		createFlightSearch: function(state, payload){
-			state.flights.push(payload);
+		addOutboundFlight: function(state, payload){
+			state.outboundFlights.push(payload);
+		},
+		addReturnFlight: function(state, payload){
+			state.returnFlights.push(payload);
 		},
 		loadFlights: function(state, payload){
 			Vue.set(state, 'flights', payload.data);
@@ -47,12 +51,10 @@ const store = new Vuex.Store({
 			return new Promise(function(resolve, reject){
 				api.createFlightSearch(payload.data).then(function({request,data}){
 					
-
-					var flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
-					['OriginDestinationOptions']['OutBoundOptions']['OutBoundOption'];
-					console.log(flight_segment)
-					
-					var airline_conversion = {'6A':'AVIACSA',
+					var outbound_flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
+					['OriginDestinationOptions']['OutBoundOptions']['OutBoundOption'];					
+					var airline_conversion = {
+												'6A':'AVIACSA',
 												'9K':'Cape Air',
 												'A0':'L Avion',
 												'A7':'Air Plus Comet',
@@ -148,15 +150,22 @@ const store = new Vuex.Store({
 												'YX':'Midwest',
 												'ZK':'Great Lakes',
 
-											}
-					// var airline_code = flight_segment[0]['FlightSegment']['OperatedByAirline']['CompanyText']
-					// console.log(airline_code)
-					for (let idx = 0; idx < flight_segment.length; idx++){
-							var airline_code = flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText']
+										}
+					for (let idx = 0; idx < outbound_flight_segment.length; idx++){
+							var airline_code = outbound_flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText']
 							var airline_name = airline_conversion[airline_code]
-							flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText'] = airline_name
+							outbound_flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText'] = airline_name
 
-							context.commit("createFlightSearch", flight_segment[idx]);
+							context.commit("addOutboundFlight", outbound_flight_segment[idx]);
+					}
+					var return_flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
+					['OriginDestinationOptions']['InBoundOptions']['InBoundOption'];
+					for (let idx = 0; idx < return_flight_segment.length; idx++){
+							var airline_code = return_flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText']
+							var airline_name = airline_conversion[airline_code]
+							return_flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText'] = airline_name
+
+							context.commit("addReturnFlight", return_flight_segment[idx]);
 					}
 					var segment_pricing = data['FlightResponse']['FpSearch_AirLowFaresRS']
 					['SegmentReference']['RefDetails'];
@@ -191,19 +200,19 @@ const store = new Vuex.Store({
 		
 	},
 	getters: {
-		getFlights: function(state, getters){
-			return state.flights;
+		getOutboundFlights: function(state, getters){
+			return state.outboundFlights;
 		},
-		getFlight: function(state, getters){
-			return function(flightId){
-				var flights = state.flights;
-				return flights.find(function(element){
-					if (element.id === flightId){
-						return element;
-					}
-				})
-			}
-		},
+		// getFlight: function(state, getters){
+		// 	return function(flightId){
+		// 		var flights = state.flights;
+		// 		return flights.find(function(element){
+		// 			if (element.id === flightId){
+		// 				return element;
+		// 			}
+		// 		})
+		// 	}
+		// },
 		getTicket: function(state, getters){
 			return function(segmentId){
 				var ticket = state.tickets[segmentId];

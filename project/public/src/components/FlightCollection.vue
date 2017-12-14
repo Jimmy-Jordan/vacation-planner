@@ -4,7 +4,7 @@
 			<ul>
 				<li 
 					is="flight-summary" 
-					v-for="flight in flights" 
+					v-for="flight in outboundFlights" 
 					v-bind:flight="flight">
 				</li>
 			</ul>
@@ -32,11 +32,11 @@ export default {
 	},
 	computed: {
 		totalPages: function(){
-			return Math.ceil(this.$store.getters.getFlights.length  / this.perPage);
+			return Math.ceil(this.$store.getters.getOutboundFlights.length  / this.perPage);
 		},
-		flights: function(){
+		outboundFlights: function(){
 			var flights, chunkStart, chunkEnd;
-			flights = this.$store.getters.getFlights;
+			flights = this.$store.getters.getOutboundFlights;
 			chunkStart = (this.current - 1) * this.perPage;
 			chunkEnd = chunkStart + this.perPage;
 			return flights.slice(chunkStart, chunkEnd);

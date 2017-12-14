@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-bind:layover="calculateLayover()">
 		<p>City: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
 		<p>Segment ID: {{flight.Segmentid}}</p>
 		<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
@@ -21,6 +21,9 @@ export default {
 		getTicket: function(){
 			var ticket = this.$store.getters.getTicket(this.flight.Segmentid)
 			return ticket
+		},
+		calculateLayover: function(){
+
 		}
 	}
 };
