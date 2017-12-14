@@ -1,8 +1,10 @@
 <template>
 	<div>
-
 		<p>City: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
 		<p>Segment ID: {{flight.Segmentid}}</p>
+		<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
+		
+
 		<!-- <router-link v-bind:to="{name: 'flight', params: {id: flight.id}}">Flight Detail</router-link> -->
 		<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
 	</div>
