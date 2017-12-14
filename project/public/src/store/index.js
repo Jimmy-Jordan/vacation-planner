@@ -15,9 +15,9 @@ const store = new Vuex.Store({
 			console.log(payload, "PAYYYYYLOADDDDD")
 			state.flights.push(payload);
 		},
-		// loadFlights: function(state, payload){
-		// 	Vue.set(state, 'flights', payload.data);
-		// },
+		loadFlights: function(state, payload){
+			Vue.set(state, 'flights', payload.data);
+		},
 		// loadAttendees: function(state, payload){
 		// 	Vue.set(payload.obj, 'attendees', payload.data);
 		// },
@@ -105,7 +105,7 @@ const store = new Vuex.Store({
 		loadFlights: function(context, payload){
 			return new Promise(function(resolve, reject){			
 				api.getFlights().then(function({data,request}){
-					
+					print(request)
 
 					context.commit("loadFlights", {
 						

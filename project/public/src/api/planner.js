@@ -18,7 +18,7 @@ export default {
 	// 	});
 	// },
 	createFlightSearch: function(data){
-		console.log(data)
+		
 		return axios({
 			method: 'get',
 			url: 'flights/search',

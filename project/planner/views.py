@@ -35,21 +35,23 @@ class FlightSearchAPIListView(View):
 
 		serializer = FlightSearchSerializer(data=request.GET)
 		if serializer.is_valid():
-			print(serializer.data)
-
+			
 			flight_search_request = serializer.flight_search_parser()
 			response_version = serializer.response_parser()
-			# pp = pprint.PrettyPrinter()
-			# pp.pprint(json_obj)
-			# print(json_obj
-			print("got this far")
+			
+			
 			search = wrapper.flight_availability_search(response_version, flight_search_request)
-
+			pp = pprint.PrettyPrinter(indent=4)
+			pp.pprint(search)
 			print("are you kidding me")
-			print(search)
+		
+
 			return JsonResponse(search)
 		else:
 			return JsonResponse(serializer.errors, status=405)
+
+	
+
 
 	# def post(self, request):
 
