@@ -9,6 +9,7 @@ const store = new Vuex.Store({
 	strict: true,
 	state: {
 		flights: [],
+		tickets: {}
 	},
 	mutations: {
 		createFlightSearch: function(state, payload){
@@ -16,6 +17,9 @@ const store = new Vuex.Store({
 		},
 		loadFlights: function(state, payload){
 			Vue.set(state, 'flights', payload.data);
+		},
+		addTickets: function(state, payload){
+			state.tickets[payload.OutBoundOptionId[0]] = payload;
 		},
 		// loadAttendees: function(state, payload){
 		// 	Vue.set(payload.obj, 'attendees', payload.data);
@@ -42,19 +46,21 @@ const store = new Vuex.Store({
 		createFlightSearch: function(context, payload){
 			return new Promise(function(resolve, reject){
 				api.createFlightSearch(payload.data).then(function({request,data}){
-					// console.log(data)
-					// console.log(data['FlightResponse']['FpSearch_AirLowFaresRS']['CntKey'])
 					var flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
-					['OriginDestinationOptions']['InBoundOptions']['InBoundOption']
-					console.log(flight_segment)
+					['OriginDestinationOptions']['OutBoundOptions']['OutBoundOption'];
+					// console.log(flight_segment)
 					for (let idx = 0; idx < flight_segment.length; idx++){
-						// if (data[idx] === flight_segment){
 							context.commit("createFlightSearch", flight_segment[idx]);
-							// console.log('hi')
-							resolve();
-						// }
-					}	
-						
+					}
+					var segment_pricing = data['FlightResponse']['FpSearch_AirLowFaresRS']
+					['SegmentReference']['RefDetails'];
+					console.log(segment_pricing)
+					for (let idx = 0; idx < segment_pricing.length; idx++){
+							context.commit("addTickets", segment_pricing[idx]);
+					}
+					resolve();
+
+
 				}).catch(function(){
 					reject();
 				});
