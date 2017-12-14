@@ -67,57 +67,6 @@ const store = new Vuex.Store({
 			});
 			
 		},
-		// editEvent: function(context, payload){
-		// 	return new Promise(function(resolve, reject){
-		// 		api.editEvent(payload.event.id, payload.data).then(function({request, data}){
-		// 			context.commit("editEvent", {
-		// 				obj: payload.event,
-		// 				data: data
-		// 			});
-		// 			resolve();
-		// 		}).catch(function(){
-		// 			reject();
-		// 		});
-		// 	});
-		// },
-		// deleteEvent: function(context, payload){
-			
-		// 	return new Promise(function(resolve, reject){
-		// 		api.deleteEvent(payload.event.id).then(function(){
-		// 			context.commit("deleteEvent", {
-		// 				target: payload.event
-		// 			});
-		// 		}).catch(function(){
-		// 			reject();
-		// 		});
-		// 	});
-		// },
-		// createAttendee: function(context, payload){
-		// 	return new Promise(function(resolve, reject){
-		// 		api.createAttendee(payload.event.id, payload.data).then(function({request, data}){
-		// 			context.commit("createAttendee", {
-		// 				obj: payload.event,
-		// 				data: data
-		// 			});
-		// 			resolve(data);
-		// 		}).catch(function(){
-		// 			reject();
-		// 		});
-		// 	});	
-		// },
-		// editAttendee: function(context, payload){
-		// 	return new Promise(function(resolve, reject){	
-		// 		api.editAttendee(payload.attendee.id, payload.data).then(function({request, data}){
-		// 			context.commit("editAttendee", {
-		// 				obj: payload.attendee,
-		// 				data: data
-		// 			});
-		// 			resolve(data);
-		// 		}).catch(function(){
-		// 			reject();
-		// 		});
-		// 	});	
-		// },
 		loadFlights: function(context, payload){
 			return new Promise(function(resolve, reject){			
 				api.getFlights().then(function({data,request}){
@@ -133,20 +82,7 @@ const store = new Vuex.Store({
 				});
 			});
 		},
-		// loadAttendees: function(context, payload){
-		// 	return new Promise(function(resolve, reject){
-		// 		var attendees = api.getEventAttendees(payload.event.id);
-		// 		attendees.then(function({data, request}){
-		// 			context.commit("loadAttendees", {
-		// 				"obj": payload.event,
-		// 				"data": data
-		// 			});
-		// 			resolve(data);
-		// 		}).catch(function(){
-		// 			reject();
-		// 		});
-		// 	});	
-		// }
+		
 	},
 	getters: {
 		getFlights: function(state, getters){
@@ -162,26 +98,13 @@ const store = new Vuex.Store({
 				})
 			}
 		},
-		// getAttendee: function(state, getters){
-		// 	return function(eventId, attendeeId){
-		// 		var event = getters.getEvent(eventId);
-		// 		if (event){
-		// 			return event.attendees.find(function(element){
-		// 				if (element.id === attendeeId){
-		// 					return element;
-		// 				}
-		// 			});
-		// 		}
-		// 	}
-		// },
-		// getAttendees: function(state, getters){
-		// 	return function(eventId){
-		// 		var event = getters.getEvent(eventId);
-		// 		if (event){
-		// 			return event.attendees
-		// 		}
-		// 	}
-		// },
+		getTicket: function(state, getters){
+			return function(segmentId){
+				var ticket = state.tickets[segmentId];
+				return ticket
+			}
+		},
+		
 	}
 });
 

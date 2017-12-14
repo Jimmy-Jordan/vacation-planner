@@ -9,9 +9,11 @@ import DefaultNavBar from './DefaultNavBar.vue';
 import FlightCollection from './FlightCollection.vue';
 import FlightSummary from './FlightSummary.vue';
 import CreateFlightSearch from './CreateFlightSearch.vue';
+import TicketSummary from './TicketSummary.vue';
 
 Vue.component(DefaultNavBar.name, DefaultNavBar);
 Vue.component(FlightCollection.name, FlightCollection);
 Vue.component(FlightSummary.name, FlightSummary);
 Vue.component(CreateFlightSearch.name, CreateFlightSearch);
+Vue.component(TicketSummary.name, TicketSummary);
 
