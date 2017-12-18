@@ -33,7 +33,7 @@ const router = new VueRouter({
 				"aside": {"template": "<default-navbar></default-navbar>"},
 				"main": {"template": `<div>
 				<create-flight-search></create-flight-search>
-				<flight-collection></flight-collection>
+				<outbound-flight-results></outbound-flight-results>
 				</div>`}
 
 			}

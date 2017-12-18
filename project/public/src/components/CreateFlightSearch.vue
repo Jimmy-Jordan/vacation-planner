@@ -41,7 +41,7 @@
   
 		
 		<el-form-item>
-			<el-button type="primary" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Create Flight Search</el-button>
+			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Search Flights</el-button>
 		</el-form-item>
 	</el-form>
 </template>

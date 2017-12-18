@@ -158,8 +158,10 @@ const store = new Vuex.Store({
 
 							context.commit("addOutboundFlight", outbound_flight_segment[idx]);
 					}
+					
 					var return_flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
 					['OriginDestinationOptions']['InBoundOptions']['InBoundOption'];
+					
 					for (let idx = 0; idx < return_flight_segment.length; idx++){
 							var airline_code = return_flight_segment[idx]['FlightSegment'][0]['OperatedByAirline']['CompanyText']
 							var airline_name = airline_conversion[airline_code]
@@ -167,9 +169,10 @@ const store = new Vuex.Store({
 
 							context.commit("addReturnFlight", return_flight_segment[idx]);
 					}
+					
 					var segment_pricing = data['FlightResponse']['FpSearch_AirLowFaresRS']
 					['SegmentReference']['RefDetails'];
-					console.log(segment_pricing)
+
 					for (let idx = 0; idx < segment_pricing.length; idx++){
 							context.commit("addTickets", segment_pricing[idx]);
 					}
@@ -202,6 +205,9 @@ const store = new Vuex.Store({
 	getters: {
 		getOutboundFlights: function(state, getters){
 			return state.outboundFlights;
+		},
+		getReturnFlights: function(state, getters){
+			return state.returnFlights;
 		},
 		getTicket: function(state, getters){
 			return function(Segmentid){

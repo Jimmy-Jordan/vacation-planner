@@ -3,7 +3,7 @@
 		<el-col :offset="6" :span="12">
 			<ul>
 				<li 
-					is="flight-summary" 
+					is="outbound-flight-summary" 
 					v-for="flight in outboundFlights" 
 					v-bind:flight="flight">
 				</li>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-	name: "flight-collection",
+	name: "outbound-flight-results",
 	data: function(){
 		return {
 			current: parseInt(this.$route.query.page) || 1,
