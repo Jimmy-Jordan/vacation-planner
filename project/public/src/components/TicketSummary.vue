@@ -1,6 +1,6 @@
 <template>
 	<div>
-		 <p>Price: {{ticket.PTC_FareBreakdown.Adult.TotalAdultFare}}</p>
+		 <p>Estimated Price: {{ticket.PTC_FareBreakdown.Adult.TotalAdultFare}}</p>
 		<p>Outbound Id: {{ticket.OutBoundOptionId[0]}}</p>
 	</div>
 </template>

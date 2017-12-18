@@ -203,19 +203,9 @@ const store = new Vuex.Store({
 		getOutboundFlights: function(state, getters){
 			return state.outboundFlights;
 		},
-		// getFlight: function(state, getters){
-		// 	return function(flightId){
-		// 		var flights = state.flights;
-		// 		return flights.find(function(element){
-		// 			if (element.id === flightId){
-		// 				return element;
-		// 			}
-		// 		})
-		// 	}
-		// },
 		getTicket: function(state, getters){
-			return function(segmentId){
-				var ticket = state.tickets[segmentId];
+			return function(Segmentid){
+				var ticket = state.tickets[Segmentid];
 				return ticket
 			}
 		},

@@ -23,8 +23,13 @@ export default {
 			return ticket
 		},
 		calculateLayover: function(){
-
+			var flight_segment = this.flight.FlightSegment
+			console.log(flight_segment)
+			if (flight_segment.length === 2)
+				console.log("hi")
+				return "<p>City: {{flight.FlightSegment[1].ArrivalAirport.LocationCode}}</p>"
 		}
 	}
 };
 </script>
+
