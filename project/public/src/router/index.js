@@ -31,10 +31,13 @@ const router = new VueRouter({
 			components: {
 				"header": {"template": '<h2 class="align-center">Flight Search</h2>'},
 				"aside": {"template": "<default-navbar></default-navbar>"},
-				"main": {"template": `<div>
+				"main": {"template": `
+				<div>
 				<create-flight-search></create-flight-search>
 				<outbound-flight-results></outbound-flight-results>
-				</div>`}
+				</div>`
+
+				},	
 
 			}
 		},
