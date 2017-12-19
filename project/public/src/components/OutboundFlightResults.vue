@@ -1,11 +1,11 @@
 <template>	
 	<el-row>
-		<el-col :offset="6" :span="12">
+		<el-col :offset="0" :span="12">
 			<ul>
 				<li 
 					is="outbound-flight-summary" 
-					v-for="flight in outboundFlights" 
-					v-bind:flight="flight">
+					v-for="outboundFlight in outboundFlights" 
+					v-bind:outboundFlight="outboundFlight">
 				</li>
 			</ul>
 			<el-pagination

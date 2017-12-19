@@ -1,8 +1,12 @@
 <template>
-	<div>
+	<div v-if="this.ticket.InBoundOptionId.length ===1">
+		 <p>Estimated Roundtrip: {{ticket.PTC_FareBreakdown.Adult.TotalAdultFare}}</p>
+<!-- 		<p>Outbound Id: {{ticket.OutBoundOptionId[0]}}</p> -->	
+	</div>
+	<div v-else>
 		 <p>Estimated Price: {{ticket.PTC_FareBreakdown.Adult.TotalAdultFare}}</p>
-<!-- 		<p>Outbound Id: {{ticket.OutBoundOptionId[0]}}</p>
- -->	</div>
+<!-- 		<p>Outbound Id: {{ticket.OutBoundOptionId[0]}}</p> -->	
+	</div>
 </template>
 
 

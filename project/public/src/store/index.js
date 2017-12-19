@@ -209,7 +209,7 @@ const store = new Vuex.Store({
 		getReturnFlights: function(state, getters){
 			return state.returnFlights;
 		},
-		getTicket: function(state, getters){
+		getOutboundContract: function(state, getters){
 			return function(Segmentid){
 				var ticket = state.tickets[Segmentid];
 				return ticket

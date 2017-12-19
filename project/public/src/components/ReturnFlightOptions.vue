@@ -1,25 +1,27 @@
 <template>	
 	<el-row>
-		<el-col :offset="6" :span="12">
-			<div>	
-				<ul>
-					<li 
-						is="return-flight-summary" 
-						v-for="flight in outboundFlights" 
-						v-bind:flight="flight">
-					</li>
-				</ul>
-				<el-pagination
-					v-model="current"
-					:page-count="totalPages"
-					:page-size="perPage"
-					layout="prev, pager, next"
-					v-on:current-change="currentChange"
-				>
-				</el-pagination>
-			</div>	
+		<el-col :offset="0" :span="12">
+			<div v-bind:key="outboundFlight.Segmentid">
+			</div>
+				<div>	
+					<ul>
+						<li 
+							is="return-flight-summary" 
+							v-for="flight in returnFlights" 
+							v-bind:flight="flight">
+						</li>
+					</ul>
+					<el-pagination
+						v-model="current"
+						:page-count="totalPages"
+						:page-size="perPage"
+						layout="prev, pager, next"
+						v-on:current-change="currentChange"
+					>
+					</el-pagination>
+				</div>	
 		</el-col>
-	</el-row>
+	</el-row>		
 </template>
 
 
@@ -32,11 +34,14 @@ export default {
 			perPage: 10
 		}
 	},
+	props: {
+		outboundFlight: {type: Object, required: true}
+	},
 	computed: {
 		totalPages: function(){
 			return Math.ceil(this.$store.getters.getReturnFlights.length  / this.perPage);
 		},
-		outboundFlights: function(){
+		returnFlights: function(){
 			var flights, chunkStart, chunkEnd;
 			flights = this.$store.getters.getReturnFlights;
 			chunkStart = (this.current - 1) * this.perPage;

@@ -1,10 +1,10 @@
 <template>
 	<el-card v-bind:style="[boxStyle, fontStyle]">
-		<div v-if="this.flight.FlightSegment.length === 2" v-bind:style="fontStyle">
-			<p>Layover to: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
-			<p>Final Destination: {{flight.FlightSegment[1].ArrivalAirport.LocationCode}}</p>
+		<div v-if="this.outboundFlight.FlightSegment.length === 2">
+			<p>Layover to: {{outboundFlight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
+			<p>Final Destination: {{outboundFlight.FlightSegment[1].ArrivalAirport.LocationCode}}</p>
 			
-			<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
+			<p>Airline: {{outboundFlight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
 			<!-- <p>Airline 2: {{flight.FlightSegment[1].OperatedByAirline.CompanyText}}</p> -->
 
 			<!-- <p>Segment ID: {{flight.Segmentid}}</p> -->
@@ -13,9 +13,9 @@
 			<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
 		</div>
 		
-		<div v-else>
-			<p>Destination: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
-			<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
+		<div v-else-if="this.outboundFlight.FlightSegment.length === 1">
+			<p>Destination: {{outboundFlight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
+			<p>Airline: {{outboundFlight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
 <!-- 			<p>Segment ID: {{flight.Segmentid}}</p>
  -->			
 			<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
@@ -23,20 +23,6 @@
 		<el-button type="primary" plain>Continue</el-button>
 	</el-card>	
 	
-
-  <!-- /*<style>
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    padding: 18px 0;
-  }
-
-  .box-card {
-    width: 480px;
-  }
-</style>*/ -->
 </template>
 
 
@@ -44,13 +30,13 @@
 export default {
 	name: "outbound-flight-summary",
 	props:{
-		flight: {type: Object, required: true}
+		outboundFlight: {type: Object, required: true}
 	},
 	data: function(){
 		return {
 			boxStyle: {
 				width: '300px',
-				// backgroundColor: '#39F7A5',
+				backgroundColor: '#C8DFF3',
 				border: '1px solid black',
 			},
 			fontStyle: {
@@ -64,7 +50,7 @@ export default {
 	},
 	methods: {
 		getTicket: function(){
-			var ticket = this.$store.getters.getTicket(this.flight.Segmentid)
+			var ticket = this.$store.getters.getOutboundContract(this.outboundFlight.Segmentid)
 			return ticket
 		},
 		
