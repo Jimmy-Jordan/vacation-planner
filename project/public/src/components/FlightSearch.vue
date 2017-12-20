@@ -50,7 +50,7 @@
 <script>
 	
 export default {
-	name: 'create-flight-search',
+	name: 'flight-search',
 	data: function(){
 		return {
 			origin:'',
@@ -63,7 +63,7 @@ export default {
 	},
 	methods:{
 		onSubmit: function(event, origin, destination, departure_date, return_date, quantity, type_of_trip){
-			this.$store.dispatch("createFlightSearch", {
+			this.$store.dispatch("flightSearch", {
 				data: {
 					origin: origin,
 					destination: destination,

@@ -1,10 +1,10 @@
 <template>
 	<el-card v-bind:style="[boxStyle, fontStyle]">
-		<div v-if="this.flight.FlightSegment.length === 2" v-bind:style="fontStyle">
-			<p>Layover to: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
-			<p>Final Destination: {{flight.FlightSegment[1].ArrivalAirport.LocationCode}}</p>
+		<div v-if="this.returnFlight.FlightSegment.length === 2" v-bind:style="fontStyle">
+			<p>Layover to: {{returnFlight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
+			<p>Final Destination: {{returnFlight.FlightSegment[1].ArrivalAirport.LocationCode}}</p>
 			
-			<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
+			<p>Airline: {{returnFlight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
 			<!-- <p>Airline 2: {{flight.FlightSegment[1].OperatedByAirline.CompanyText}}</p> -->
 
 			<!-- <p>Segment ID: {{flight.Segmentid}}</p> -->
@@ -14,8 +14,8 @@
 		</div>
 		
 		<div v-else>
-			<p>Destination: {{flight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
-			<p>Airline: {{flight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
+			<p>Destination: {{returnFlight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
+			<p>Airline: {{returnFlight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
 <!-- 			<p>Segment ID: {{flight.Segmentid}}</p>
  -->			
 			<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
@@ -29,7 +29,8 @@
 export default {
 	name: "return-flight-summary",
 	props:{
-		flight: {type: Object, required: true}
+		returnFlight: {type: Object, required: true},
+		outboundFlight: {type: Object, required: true}
 	},
 	data: function(){
 		return {
@@ -48,10 +49,11 @@ export default {
 		
 	},
 	methods: {
-		// getTicket: function(){
-		// 	var ticket = this.$store.getters.getOutboundContract(this.flight.Segmentid)
-		// 	return ticket
-		// },
+		getTicket: function(){
+			var ticket = this.$store.getters.getOutboundContract(this.returnFlight.Segmentid)
+			return ticket
+		},
+		//When you have a round trip, there are multiple contracts that correspond to a single Segmentid, individual contracts require both outbound and return SegmentId to match the contract.
 		
 	}
 };

@@ -1,14 +1,13 @@
 <template>	
 	<el-row>
 		<el-col :offset="0" :span="12">
-			<div v-bind:key="outboundFlight.Segmentid">
-			</div>
-				<div>	
+				<div>
+					<div v-on:get-departure="getDeparture"></div>	
 					<ul>
 						<li 
 							is="return-flight-summary" 
-							v-for="flight in returnFlights" 
-							v-bind:flight="flight">
+							v-for="returnFlight in returnFlights" 
+							v-bind:returnFlight="returnFlight">
 						</li>
 					</ul>
 					<el-pagination
@@ -49,9 +48,15 @@ export default {
 			return flights.slice(chunkStart, chunkEnd);
 		}
 	},
+	created () {
+		this.getDeparture()
+	},
 	methods: {
 		"currentChange": function(newPage){
 			this.$set(this, "current", newPage);
+		},
+		getDeparture: function(){
+			this.$store.getters.getOutboundFlight(this.$route.params.id)
 		}
 	},
 	watch: {

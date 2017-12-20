@@ -5,7 +5,7 @@
 		mode="vertical"
 	>
 		<el-menu-item index="/profile">Profile</el-menu-item>
-		<el-menu-item index="/create-flight-search">Flight Search</el-menu-item>
+		<el-menu-item index="/">Flight Search</el-menu-item>
 	</el-menu>
 </template>
 

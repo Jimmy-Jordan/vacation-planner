@@ -47,9 +47,9 @@ const store = new Vuex.Store({
 		// }
 	},
 	actions: {
-		createFlightSearch: function(context, payload){
+		flightSearch: function(context, payload){
 			return new Promise(function(resolve, reject){
-				api.createFlightSearch(payload.data).then(function({request,data}){
+				api.flightSearch(payload.data).then(function({request,data}){
 					
 					var outbound_flight_segment = data['FlightResponse']['FpSearch_AirLowFaresRS']
 					['OriginDestinationOptions']['OutBoundOptions']['OutBoundOption'];					
@@ -213,6 +213,26 @@ const store = new Vuex.Store({
 			return function(Segmentid){
 				var ticket = state.tickets[Segmentid];
 				return ticket
+			}
+		},
+		getFullContract: function(state, getters){
+			return function(outboundSegmentid, returnSegmentid){
+				var outboundTicket = state.tickets[outboundSegmentid]
+				var returnTicket = state.tickets[returnSegmentid]
+
+			}
+		},
+		getOutboundFlight: function(state, getters){
+			console.log('hi')
+			return function(Segmentid){
+				console.log("hello")
+				console.log(Segmentid)
+				var outboundFlights = state.outboundFlights;
+				return outboundFlights.find(function(element){
+					if (element.Segmentid === Segmentid){
+						return element;
+					}
+				})
 			}
 		},
 		
