@@ -55,7 +55,10 @@ const router = new VueRouter({
 				 `
 			},
 			props: {
-				main: true
+				main: true,
+				aside: false,
+				header: false,
+				
 			},
 			// beforeEnter: function(to, from, next){
 			// 	console.log(to)

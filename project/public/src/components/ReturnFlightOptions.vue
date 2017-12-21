@@ -1,24 +1,26 @@
 <template>	
 	<el-row>
 		<el-col :offset="0" :span="12">
-				<div>
-					<div v-on:get-departure="getDeparture"></div>	
-					<ul>
-						<li 
-							is="return-flight-summary" 
-							v-for="returnFlight in returnFlights" 
-							v-bind:returnFlight="returnFlight">
-						</li>
-					</ul>
-					<el-pagination
-						v-model="current"
-						:page-count="totalPages"
-						:page-size="perPage"
-						layout="prev, pager, next"
-						v-on:current-change="currentChange"
-					>
-					</el-pagination>
-				</div>	
+			<div>
+				<outbound-flight-summary v-on:get-departure="getDeparture">
+					<p>{{outboundFlight.Segmentid}}</p>
+				</outbound-flight-summary>	
+				<ul>
+					<li 
+						is="return-flight-summary" 
+						v-for="returnFlight in returnFlights" 
+						v-bind:returnFlight="returnFlight">
+					</li>
+				</ul>
+				<el-pagination
+					v-model="current"
+					:page-count="totalPages"
+					:page-size="perPage"
+					layout="prev, pager, next"
+					v-on:current-change="currentChange"
+				>
+				</el-pagination>
+			</div>	
 		</el-col>
 	</el-row>		
 </template>
@@ -56,6 +58,7 @@ export default {
 			this.$set(this, "current", newPage);
 		},
 		getDeparture: function(){
+			console.log(this.$route.params.id)
 			this.$store.getters.getOutboundFlight(this.$route.params.id)
 		}
 	},

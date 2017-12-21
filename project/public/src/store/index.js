@@ -223,13 +223,14 @@ const store = new Vuex.Store({
 			}
 		},
 		getOutboundFlight: function(state, getters){
-			console.log('hi')
+
 			return function(Segmentid){
-				console.log("hello")
-				console.log(Segmentid)
+				
 				var outboundFlights = state.outboundFlights;
 				return outboundFlights.find(function(element){
+					
 					if (element.Segmentid === Segmentid){
+						console.log(element)
 						return element;
 					}
 				})
