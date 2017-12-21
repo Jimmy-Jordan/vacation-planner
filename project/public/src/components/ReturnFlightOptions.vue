@@ -2,9 +2,12 @@
 	<el-row>
 		<el-col :offset="0" :span="12">
 			<div>
-				<outbound-flight-summary v-on:get-departure="getDeparture">
+				<div 
+					is="outbound-flight-summary"
+					v-for="outboundFlight in getDeparture"
+					v-bind:outboundFlight="outboundFlight">
 					<p>{{outboundFlight.Segmentid}}</p>
-				</outbound-flight-summary>	
+				</div>	
 				<ul>
 					<li 
 						is="return-flight-summary" 
@@ -50,17 +53,17 @@ export default {
 			return flights.slice(chunkStart, chunkEnd);
 		}
 	},
-	created () {
-		this.getDeparture()
-	},
+	// created () {
+	// 	this.getDeparture()
+	// },
 	methods: {
 		"currentChange": function(newPage){
 			this.$set(this, "current", newPage);
 		},
-		getDeparture: function(){
-			console.log(this.$route.params.id)
-			this.$store.getters.getOutboundFlight(this.$route.params.id)
-		}
+		// getDeparture: function(){
+		// 	console.log(this.$route.params.id)
+		// 	this.$store.getters.getOutboundFlight(this.$route.params.id)
+		// }
 	},
 	watch: {
 		"$route": function(newRoute, oldRoute){

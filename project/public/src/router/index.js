@@ -60,33 +60,34 @@ const router = new VueRouter({
 				header: false,
 				
 			},
-			// beforeEnter: function(to, from, next){
-			// 	console.log(to)
-			// 	console.log(String(to.params))
-			// 	console.log("hi")
-			// 	console.log(to.params.id)
-			// 	console.log(to.params.Segmentid)
-			// 	var outboundFlight = DataStore.getters.getOutboundFlight(to.params.Segmentid);
-			// 	console.log(outboundFlight)
-			// 	//Might need JS equivalent of str method
-			// 	console.log(to)
-			// 	if (outboundFlight){
-			// 		to.params.outboundFlight = outboundFlight;
-			// 		// if (!Object.hasOwnProperty.call(event, "attendees")){
-			// 		// 	DataStore.dispatch("loadAttendees", {
-			// 		// 		event: event
-			// 		// 	}).then(function(){
-			// 		// 		next();
-			// 		// 	});
-			// 		// } else {
-			// 		// 	next();
-			// 		// }
-			// 	} else {
-			// 		console.log("error");
-			// 		next();
-			// 		// next({name: '404'});
-			// 	}
-			// }
+			beforeEnter: function(to, from, next){
+				console.log(to)
+				console.log(to.params)
+				// var outboundFlight = DataStore.getters.getOutboundFlight(this.$route.params.id)
+				var outboundFlight = DataStore.getters.getOutboundFlight(to.params.id);
+				console.log(outboundFlight)
+				console.log(to.params)
+				if (outboundFlight){
+					return outboundFlight.then(function(){
+						next();
+					});
+					// to.params.outboundFlight = outboundFlight;
+					
+					// if (!Object.hasOwnProperty.call(event, "attendees")){
+					// 	DataStore.dispatch("loadAttendees", {
+					// 		event: event
+					// 	}).then(function(){
+					// 		next();
+					// 	});
+					// } else {
+					// 	next();
+					// }
+				} else {
+					console.log("error");
+					next();
+					// next({name: '404'});
+				}
+			}
 			}
 
 		},
