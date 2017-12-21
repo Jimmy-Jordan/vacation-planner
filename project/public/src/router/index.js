@@ -54,10 +54,7 @@ const router = new VueRouter({
 				 </div>
 				 `
 			},
-			props: {
-				main: true,
-				aside: false,
-				header: false,
+			props: (route) => ({id: route.outboundFlight.Segmentid})
 				
 			},
 			beforeEnter: function(to, from, next){
@@ -68,9 +65,7 @@ const router = new VueRouter({
 				console.log(outboundFlight)
 				console.log(to.params)
 				if (outboundFlight){
-					return outboundFlight.then(function(){
 						next();
-					});
 					// to.params.outboundFlight = outboundFlight;
 					
 					// if (!Object.hasOwnProperty.call(event, "attendees")){
@@ -87,7 +82,6 @@ const router = new VueRouter({
 					next();
 					// next({name: '404'});
 				}
-			}
 			}
 
 		},
