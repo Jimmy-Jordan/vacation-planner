@@ -54,9 +54,9 @@ const router = new VueRouter({
 				 </div>
 				 `
 			},
-			props: (route) => ({id: route.outboundFlight.Segmentid})
 				
 			},
+			props: (route) => ({id: route.outboundFlight.Segmentid}),
 			beforeEnter: function(to, from, next){
 				console.log(to)
 				console.log(to.params)
