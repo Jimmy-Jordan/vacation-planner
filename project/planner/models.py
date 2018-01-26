@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 class SavedFlightRoute(models.Model):
 
 	trip_type = models.CharField(max_length=10)
-	response_version = models.CharField(max_length=9, default="VERSION41")
 	destination = models.CharField(max_length=4)
 	origin = models.CharField(max_length=4)
 	passengers = models.PositiveSmallIntegerField()
