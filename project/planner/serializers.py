@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from planner.models import SavedFlightSearch
+from planner.models import SavedFlightRoute
 
 
 class FlightSearchSerializer(serializers.Serializer):
@@ -88,21 +88,21 @@ class FlightSearchSerializer(serializers.Serializer):
 
 
 
-class SavedFlightSearchSerializer(serializers.ModelSerializer):
+# class SavedFlightSearchSerializer(serializers.ModelSerializer):
 	
-	user = serializers.SlugRelatedField(
-		many=False,
-		read_only=True,
-		slug_field='username'
-	)
+# 	user = serializers.SlugRelatedField(
+# 		many=False,
+# 		read_only=True,
+# 		slug_field='username'
+# 	)
 
-	class Meta:
-		model = SavedFlightSearch
-		fields = [
-			'destination', 'origin', 'quantity', 'type_of_trip', 
-			'departure_date', 'return_date', 'id', 'user'
-		]
-		read_only_fields = ('id',)
+# 	class Meta:
+# 		model = SavedFlightSearch
+# 		fields = [
+# 			'destination', 'origin', 'quantity', 'type_of_trip', 
+# 			'departure_date', 'return_date', 'id', 'user'
+# 		]
+# 		read_only_fields = ('id',)
 
 
 #Do we need a model to base the serializer on? Examples online mostly show using a model
