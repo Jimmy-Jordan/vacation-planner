@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from planner.models import SavedFlightRoute
+from planner.models import SavedFlightRoute, DepartureEstimate, ReturnEstimate
 
 
 class FlightSearchSerializer(serializers.Serializer):
@@ -88,25 +88,35 @@ class FlightSearchSerializer(serializers.Serializer):
 
 
 
-# class SavedFlightSearchSerializer(serializers.ModelSerializer):
+class SavedFlightRouteSerializer(serializers.ModelSerializer):
 	
-# 	user = serializers.SlugRelatedField(
-# 		many=False,
-# 		read_only=True,
-# 		slug_field='username'
-# 	)
+	user = serializers.SlugRelatedField(
+		many=False,
+		read_only=True,
+		slug_field='username'
+	)
 
-# 	class Meta:
-# 		model = SavedFlightSearch
-# 		fields = [
-# 			'destination', 'origin', 'quantity', 'type_of_trip', 
-# 			'departure_date', 'return_date', 'id', 'user'
-# 		]
-# 		read_only_fields = ('id',)
+	#Might need a HyperlinkedIdentityField here so when you click on the Saved Flight Route it will load all the selected flights
+
+	class Meta:
+		model = SavedRouteSearch
+		fields = [
+			'trip_type', 'destination', 'origin', 'passengers', 
+			'id', 'user'
+		]
+		read_only_fields = ('id', 'user')
+
+class DepartureEstimateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = DepartureEstimate
+		fields = ('airline', 'estimated_roundtrip', 'flight_time', 'search_timestamp', 'direct_flight', 'flight_route')		
+
+class ReturnEstimateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = DepartureEstimate
+		fields = ('airline', 'estimated_roundtrip', 'flight_time', 'search_timestamp', 'direct_flight', 'flight_route')
 
 
-#Do we need a model to base the serializer on? Examples online mostly show using a model
-#Should we be using the model for saving flights? If so, is it possible to use the
-#FlightSearchSerializer? Or should I make one serializer for the API request, one for saving,
-#one for deserializing, etc.
-#Would a ListSerializer (per DRF docs) be good for deserializing that amount of data?         
+     

@@ -5,18 +5,6 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 export default {
-	getFlights: function(){
-		return axios({
-			method: 'get',
-			url: 'flights/'
-		});
-	},
-	// getFlight: function(flightId){
-	// 	return axios({
-	// 		method: 'get',
-	// 		url: 'flights/search/' + flightId
-	// 	});
-	// },
 	flightSearch: function(data){
 		console.log(data)
 		return axios({
@@ -24,6 +12,19 @@ export default {
 			url: 'flights/search',
 			params: data
 		});
-	}
+	},
+	getSavedRoutes: function(){
+		return axios({
+			method: 'get',
+			url: 'flights/savedsearch',
+		});
+	},
+	createSavedRoute: function(){
+		return axios({
+			method: 'post',
+			url: 'flights/search',
+			params: data
+		});
+	},
 
 }

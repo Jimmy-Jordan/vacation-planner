@@ -185,21 +185,22 @@ const store = new Vuex.Store({
 			});
 			
 		},
-		loadFlights: function(context, payload){
-			return new Promise(function(resolve, reject){			
-				api.getFlights().then(function({data,request}){
+		//This function was previously unused but might be useful for saved flight routes
+		// loadFlights: function(context, payload){
+		// 	return new Promise(function(resolve, reject){			
+		// 		api.getFlights().then(function({data,request}){
 					
 
-					context.commit("loadFlights", {
+		// 			context.commit("loadFlights", {
 						
-						"data": data
-					});
-					resolve(data);
-				}).catch(function(){
-					reject();
-				});
-			});
-		},
+		// 				"data": data
+		// 			});
+		// 			resolve(data);
+		// 		}).catch(function(){
+		// 			reject();
+		// 		});
+		// 	});
+		// },
 		
 	},
 	getters: {
