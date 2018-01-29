@@ -10,7 +10,8 @@ const store = new Vuex.Store({
 	state: {
 		outboundFlights: [],
 		returnFlights: [],
-		tickets: {}
+		tickets: {},
+		savedRoutes: [],
 	},
 	mutations: {
 		addOutboundFlight: function(state, payload){
@@ -25,26 +26,28 @@ const store = new Vuex.Store({
 		addTickets: function(state, payload){
 			state.tickets[payload.OutBoundOptionId[0]] = payload;
 		},
-		// loadAttendees: function(state, payload){
-		// 	Vue.set(payload.obj, 'attendees', payload.data);
-		// },
-		// editEvent: function(state, payload){
-		// 	Object.assign(payload.obj, payload.data);
-		// },
-		// createAttendee: function(state, payload){
-		// 	payload.obj.attendees.push(payload.data);
-		// },
-		// editAttendee: function(state, payload){
-		// 	Object.assign(payload.obj, payload.data);
-		// },
-		// deleteEvent: function(state, payload){
-		// 	for (let idx = 0; idx < state.events.length; idx++){
-		// 		if (state.events[idx].id === payload.target.id){
-		// 			state.events.splice(idx, 1);
-		// 			return;
-		// 		}
-		// 	}
-		// }
+		createSavedRoute: function(state, payload){
+			state.savedRoutes.push(payload);
+		},
+		// Need to figure out where the string part of the below is referring to.
+		loadSavedRoutes: function(state, payload){
+			Vue.set(state, 'savedRoutes', payload.data);
+		},
+		createSavedDeparture: function(state, payload){
+			
+		},
+		createSavedReturn: function(state, payload){
+
+		},
+		loadSavedDepartures: function(state, payload){
+			Vue.set(payload.obj, 'departures', payload.data)
+		},
+		loadSavedReturns: function(state, payload){
+			Vue.set(payload.obj, 'returns', payload.data)
+		},
+
+
+		
 	},
 	actions: {
 		flightSearch: function(context, payload){

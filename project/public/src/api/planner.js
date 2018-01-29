@@ -19,7 +19,33 @@ export default {
 			url: 'flights/savedsearch',
 		});
 	},
-	createSavedRoute: function(){
+	createSavedRoute: function(data){
+		return axios({
+			method: 'post',
+			url: 'flights/search',
+			params: data
+		});
+	},
+	getSavedRouteDepartures: function(routeId){
+		return axios({
+			method: 'get',
+			url: 'flights/savedsearch/' + routeId + 'departures'
+		});
+	},
+	getSavedRouteReturns: function(routeId){
+		return axios({
+			method: 'get',
+			url: 'flights/savedsearch/' + routeId + 'returns'
+		});
+	},
+	createSavedRouteDepartures: function(data){
+		return axios({
+			method: 'post',
+			url: 'flights/search',
+			params: data
+		});
+	},
+	createSavedRouteReturns: function(data){
 		return axios({
 			method: 'post',
 			url: 'flights/search',
