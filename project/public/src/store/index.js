@@ -34,7 +34,7 @@ const store = new Vuex.Store({
 			Vue.set(state, 'savedRoutes', payload.data);
 		},
 		createSavedDeparture: function(state, payload){
-			
+
 		},
 		createSavedReturn: function(state, payload){
 
@@ -188,6 +188,28 @@ const store = new Vuex.Store({
 			});
 			
 		},
+		createSavedRoute: function(context, payload){
+			return new Promise(function(resolve, reject){
+				api.createSavedRoute(payload.data).then(function({request, data}){
+					context.commit("createSavedRoute", data);
+					resolve();
+				}).catch(function(){
+					reject();
+				});
+			});
+		},
+		loadSavedRoutes: function(context){
+			return new Promise(function(resolve, reject){
+				api.getSavedRoutes().then(function({data, request}){
+					context.commit("loadSavedRoutes", {
+						"data": data
+					});
+					resolve(data);
+				}).catch(function(){
+					reject();
+				});
+			});
+		},
 		//This function was previously unused but might be useful for saved flight routes
 		// loadFlights: function(context, payload){
 		// 	return new Promise(function(resolve, reject){			
@@ -237,8 +259,11 @@ const store = new Vuex.Store({
 						console.log(element)
 						return element;
 					}
-				})
+				}) 
 			}
+		},
+		getSavedRoutes: function(state, getters){
+			return state.savedRoutes;
 		},
 		
 	}
