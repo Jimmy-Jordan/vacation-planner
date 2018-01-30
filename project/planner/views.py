@@ -23,14 +23,13 @@ from planner.permissions import SearchIsOwnerOrReadOnly
 
 
 class FlightSearchAPIView(View):
-		'''
-		Call the wrapper
-		save the response in a variable
-		parse the response for the data you want if needed (unlikely here)
-		send the data to the browser
-		cache the results if possible (do later)
-		'''
-
+	'''
+	Call the wrapper
+	save the response in a variable
+	parse the response for the data you want if needed (unlikely here)
+	send the data to the browser
+	cache the results if possible (do later)
+	'''
 
 	def get(self, request):
 		wrapper = Wrapper(
@@ -59,13 +58,13 @@ class FlightRouteListView(generics.ListAPIView):
 
 	#Might have to adjust the permission so you must be Owner to read
 
-class FlightRouteDepartureListView(generics.ListAPIVIew):
+class FlightRouteDepartureListView(generics.ListAPIView):
 
 	queryset = DepartureEstimate.objects.all()
 	serializer_class = DepartureEstimateSerializer
 	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-class FlightRouteReturnListView(generics.ListAPIVIew):
+class FlightRouteReturnListView(generics.ListAPIView):
 
 	queryset = ReturnEstimate.objects.all()
 	serializer_class = ReturnEstimateSerializer

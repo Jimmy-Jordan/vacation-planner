@@ -99,7 +99,7 @@ class SavedFlightRouteSerializer(serializers.ModelSerializer):
 	#Might need a HyperlinkedIdentityField here so when you click on the Saved Flight Route it will load all the selected flights
 
 	class Meta:
-		model = SavedRouteSearch
+		model = SavedFlightRoute
 		fields = [
 			'trip_type', 'destination', 'origin', 'passengers', 
 			'id', 'user'
