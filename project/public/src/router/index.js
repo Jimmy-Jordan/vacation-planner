@@ -38,7 +38,7 @@ const router = new VueRouter({
 			components: {
 				"header": { "template": '<h2 class="align-center">User Profile</h2>'},
 				"aside": { "template": "<default-navbar></default-navbar>"},
-				"main": { "template": "<p>Placeholder</p>" }
+				"main": { "template": "<user-profile></user-profile>" }
 			}
 		},
 		{
