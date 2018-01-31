@@ -2,12 +2,12 @@
 	<el-row>
 		<el-col :offset="0" :span="12">
 			<div>
-				<div 
+				<!-- <div 
 					is="outbound-flight-summary"
 					v-for="outboundFlight in getDeparture"
 					v-bind:outboundFlight="outboundFlight">
 					<p>{{outboundFlight.Segmentid}}</p>
-				</div>	
+				</div> -->	
 				<ul>
 					<li 
 						is="return-flight-summary" 

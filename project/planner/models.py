@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 
 class SavedFlightRoute(models.Model):
 
-	trip_type = models.CharField(max_length=10)
+	type_of_trip = models.CharField(max_length=10)
 	destination = models.CharField(max_length=4)
 	origin = models.CharField(max_length=4)
-	passengers = models.PositiveSmallIntegerField()
+	quantity = models.PositiveSmallIntegerField()
 	# departure_date = models.DateField()
 	# return_date = models.DateField()
 	user = models.ForeignKey(User, on_delete=models.PROTECT)

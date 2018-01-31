@@ -41,7 +41,7 @@
   
 		
 		<el-form-item>
-			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Search Flights</el-button>
+			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip); databaseSave($event, origin, destination, quantity, type_of_trip);">Search Flights</el-button>
 		</el-form-item>
 	</el-form>
 </template>
@@ -82,6 +82,20 @@ export default {
 			
 
 			
+		},
+		databaseSave: function(event, origin, destination, quantity, type_of_trip){
+			this.$store.dispatch("createSavedRoute", {
+				data: {
+					origin: origin,
+					destination: destination,
+					quantity: quantity,
+					type_of_trip: type_of_trip
+				}
+			});
+			this.$set(this, "origin", "");
+			this.$set(this, "destination", "");
+			this.$set(this, "quantity", "");
+			this.$set(this, "type_of_trip", "");
 		}
 	}
 }
