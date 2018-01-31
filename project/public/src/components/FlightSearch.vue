@@ -1,7 +1,6 @@
-<!-- https://chenz24.github.io/vue-blu/#/en/components/form -->
 
 <template>
-	<el-form ref="form" size="mini" label-width="120px" style="width: 40%;"v-on:submit.prevent="createFlightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">
+	<el-form ref="form" size="mini" label-width="120px" style="width: 40%;"v-on:submit.prevent="flightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip); createSavedRoute($event, origin, destination, quantity, type_of_trip);">
 		<el-form-item label="Origin:">
 			<el-input v-model="origin" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
 		</el-form-item>
@@ -30,18 +29,10 @@
 
 
 		</el-form-item>
-
-
-		<!-- <el-checkbox-group v-model="status">
-			<el-checkbox-button v-for="option in options" :label="option" :key="option">{{option}}</el-checkbox-button>
-		</el-checkbox-group> -->
-
-		<!-- <el-checkbox v-model="checked1">One Way</el-checkbox>
-		<el-checkbox v-model="checked2">Round Trip</el-checkbox> -->
   
 		
 		<el-form-item>
-			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip); databaseSave($event, origin, destination, quantity, type_of_trip);">Search Flights</el-button>
+			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Search Flights</el-button>
 		</el-form-item>
 	</el-form>
 </template>
@@ -79,11 +70,6 @@ export default {
 			this.$set(this, "return_date", "");
 			this.$set(this, "quantity", "");
 			this.$set(this, "type_of_trip", "");
-			
-
-			
-		},
-		databaseSave: function(event, origin, destination, quantity, type_of_trip){
 			this.$store.dispatch("createSavedRoute", {
 				data: {
 					origin: origin,
@@ -96,7 +82,23 @@ export default {
 			this.$set(this, "destination", "");
 			this.$set(this, "quantity", "");
 			this.$set(this, "type_of_trip", "");
-		}
+
+			
+		},
+		// databaseSave: function(event, origin, destination, quantity, type_of_trip){
+		// 	this.$store.dispatch("createSavedRoute", {
+		// 		data3: {
+		// 			origin: origin,
+		// 			destination: destination,
+		// 			quantity: quantity,
+		// 			type_of_trip: type_of_trip
+		// 		}
+		// 	});
+		// 	this.$set(this, "origin", "");
+		// 	this.$set(this, "destination", "");
+		// 	this.$set(this, "quantity", "");
+		// 	this.$set(this, "type_of_trip", "");
+		// }
 	}
 }
 </script>

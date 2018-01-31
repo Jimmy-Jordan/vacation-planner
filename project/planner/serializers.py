@@ -101,7 +101,7 @@ class SavedFlightRouteSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = SavedFlightRoute
 		fields = [
-			'trip_type', 'destination', 'origin', 'passengers', 
+			'type_of_trip', 'destination', 'origin', 'quantity', 
 			'id', 'user'
 		]
 		read_only_fields = ('id', 'user')

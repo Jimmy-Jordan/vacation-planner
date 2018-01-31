@@ -51,6 +51,8 @@ const store = new Vuex.Store({
 	},
 	actions: {
 		flightSearch: function(context, payload){
+			console.log('flight search action')
+			console.log(payload)
 			return new Promise(function(resolve, reject){
 				api.flightSearch(payload.data).then(function({request,data}){
 					
@@ -189,8 +191,10 @@ const store = new Vuex.Store({
 			
 		},
 		createSavedRoute: function(context, payload){
+			console.log('saved route action')
+			console.log(payload)
 			return new Promise(function(resolve, reject){
-				api.createSavedRoute(payload.data).then(function({request, data}){
+				api.createSavedRoute(payload.data).then(function({request,data}){
 					context.commit("createSavedRoute", data);
 					resolve();
 				}).catch(function(){

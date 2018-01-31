@@ -39,7 +39,7 @@ class FlightSearchAPIView(View):
 
 		serializer = FlightSearchSerializer(data=request.GET)
 		if serializer.is_valid():
-			# print(serializer.data)
+			print(self.request.user)
 			flight_search_request = serializer.flight_search_parser()
 			response_version = serializer.response_parser()
 			search = wrapper.flight_availability_search(response_version, flight_search_request)
@@ -50,12 +50,15 @@ class FlightSearchAPIView(View):
 			return JsonResponse(serializer.errors, status=405)
 
 
-class FlightRouteListView(generics.ListAPIView):
+class FlightRouteListView(generics.ListCreateAPIView):
 
 	queryset = SavedFlightRoute.objects.all()
 	serializer_class = SavedFlightRouteSerializer
 	permission_classes = (SearchIsOwnerOrReadOnly,)
 
+	
+	def perform_create(self, serializer):
+		serializer.save(user=self.request.user)
 	#Might have to adjust the permission so you must be Owner to read
 
 class FlightRouteDepartureListView(generics.ListAPIView):

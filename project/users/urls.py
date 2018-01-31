@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from user import views
+from users import views
 
-app_name = 'user'
+app_name = 'users'
 
 urlpatterns = [
     url(r'^$', views.Index.as_view(), name="index"),

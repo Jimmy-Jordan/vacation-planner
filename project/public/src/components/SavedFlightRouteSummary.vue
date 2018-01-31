@@ -4,10 +4,10 @@
 		
 		<div>
 			
-			<p>Trip Type: {{flightRoute.trip_type}}</p>
-			<p>Origin: {{flightRoute.origin}}</p>
-			<p>Destination: {{flightRoute.destination}}</p>
-			<p>Passengers: {{flightRoute.passengers}}</p>
+			<p>Trip Type: {{savedRoute.type_of_trip}}</p>
+			<p>Origin: {{savedRoute.origin}}</p>
+			<p>Destination: {{savedRoute.destination}}</p>
+			<p>Passengers: {{savedRoute.quantity}}</p>
 
 		</div>
 		
@@ -20,7 +20,7 @@
 export default {
 	name: "saved-flight-route-summary",
 	props:{
-		flightRoute: {type: Object, required: true}
+		savedRoute: {type: Object, required: true}
 	},
 	data: function(){
 		return {
