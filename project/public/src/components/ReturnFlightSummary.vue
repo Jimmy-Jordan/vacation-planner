@@ -36,7 +36,7 @@ export default {
 		return {
 			boxStyle: {
 				width: '300px',
-				// backgroundColor: '#39F7A5',
+				backgroundColor: '#c4fff9',
 				border: '1px solid black',
 			},
 			fontStyle: {

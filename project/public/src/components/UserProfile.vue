@@ -1,4 +1,4 @@
-<template>	
+<template v-bind:style="[backgroundStyle]">	
 	<el-row>
 		<el-col :offset="0" :span="12">
 			<ul>
@@ -14,6 +14,7 @@
 				:page-size="perPage"
 				layout="prev, pager, next"
 				v-on:current-change="currentChange"
+				v-bind:style="[fontStyle]"
 			>
 			</el-pagination>
 		</el-col>
@@ -26,7 +27,15 @@ export default {
 	data: function(){
 		return {
 			current: parseInt(this.$route.query.page) || 1,
-			perPage: 10
+			perPage: 10,
+			backgroundStyle: {
+				backgroundColor: '#fbfbf2'
+			},
+			fontStyle: {
+				fontSize: '16px',
+				padding: '20px 445px',
+				textAlign: 'center',
+			}
 		}
 	},
 	computed: {

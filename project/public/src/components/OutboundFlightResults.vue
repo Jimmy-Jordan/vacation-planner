@@ -1,6 +1,6 @@
 <template>	
 	<el-row>
-		<el-col :offset="0" :span="12">
+		<el-col :offset="5" :span="12">
 			<ul>
 				<li 
 					is="outbound-flight-summary" 
@@ -14,6 +14,7 @@
 				:page-size="perPage"
 				layout="prev, pager, next"
 				v-on:current-change="currentChange"
+				v-bind:style="[fontStyle]"
 			>
 			</el-pagination>
 		</el-col>
@@ -27,7 +28,12 @@ export default {
 	data: function(){
 		return {
 			current: parseInt(this.$route.query.page) || 1,
-			perPage: 10
+			perPage: 10,
+			fontStyle: {
+				fontSize: '16px',
+				padding: '10px 75px',
+				textAlign: 'center',
+			}
 		}
 	},
 	computed: {

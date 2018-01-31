@@ -1,40 +1,42 @@
 
 <template>
-	<el-form ref="form" size="mini" label-width="120px" style="width: 40%;"v-on:submit.prevent="flightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip); createSavedRoute($event, origin, destination, quantity, type_of_trip);">
-		<el-form-item label="Origin:">
-			<el-input v-model="origin" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
-		</el-form-item>
+	
+		<el-form ref="form" size="small" label-width="120px" style="width: 35%;"v-on:submit.prevent="flightSearch($event, origin, destination, departure_date, return_date, quantity, type_of_trip); createSavedRoute($event, origin, destination, quantity, type_of_trip);">
+			<el-form-item label="Origin:">
+				<el-input v-model="origin" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
+			</el-form-item>
 
-		<el-form-item label="Destination:">
-			<el-input v-model="destination" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
-		</el-form-item>
-		
-		<el-form-item label="Departure Date:">
-			<el-input type="date" v-model="departure_date" placeholder="Flight Departure"></el-input>
+			<el-form-item label="Destination:">
+				<el-input v-model="destination" maxLength="3" placeholder="3-Letter Airport Code"></el-input>
+			</el-form-item>
 			
-		</el-form-item>
+			<el-form-item label="Departure Date:">
+				<el-input type="date" v-model="departure_date" placeholder="Flight Departure"></el-input>
+				
+			</el-form-item>
 
-		<el-form-item label="Return Date:">
-			<el-input type="date" v-model="return_date" placeholder="Flight Arrival"></el-input>
-		</el-form-item>
+			<el-form-item label="Return Date:">
+				<el-input type="date" v-model="return_date" placeholder="Flight Arrival"></el-input>
+			</el-form-item>
 
-		<el-form-item label="Passengers:">
-			<el-input type="number" v-model="quantity" placeholder="Max: 9 People"></el-input>
-		</el-form-item>
+			<el-form-item label="Passengers:">
+				<el-input type="number" v-model="quantity" placeholder="Max: 9 People"></el-input>
+			</el-form-item>
 
-		<el-form-item label="Status:">
+			<el-form-item label="Status:">
+				
+				<el-radio v-model="type_of_trip" label="ONEWAYTRIP">One Way</el-radio>
+				<el-radio v-model="type_of_trip" label="ROUNDTRIP">Round Trip</el-radio>
+
+
+			</el-form-item>
+	  
 			
-			<el-radio v-model="type_of_trip" label="ONEWAYTRIP">One Way</el-radio>
-			<el-radio v-model="type_of_trip" label="ROUNDTRIP">Round Trip</el-radio>
+			<el-form-item>
+				<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Search Flights</el-button>
+			</el-form-item>
+		</el-form>
 
-
-		</el-form-item>
-  
-		
-		<el-form-item>
-			<el-button type="primary" icon="el-icon-search" v-on:click="onSubmit($event, origin, destination, departure_date, return_date, quantity, type_of_trip)">Search Flights</el-button>
-		</el-form-item>
-	</el-form>
 </template>
 
 

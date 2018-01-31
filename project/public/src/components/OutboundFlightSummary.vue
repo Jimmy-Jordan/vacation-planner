@@ -40,7 +40,7 @@ export default {
 		return {
 			boxStyle: {
 				width: '300px',
-				backgroundColor: '#C8DFF3',
+				backgroundColor: '#f7c0b4',
 				border: '1px solid black',
 			},
 			fontStyle: {

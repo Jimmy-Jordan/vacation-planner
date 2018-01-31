@@ -20,7 +20,7 @@ const router = new VueRouter({
 			name: "flight-search",
 			path: "/",
 			components: {
-				"header": {"template": '<h2 class="align-center">Flight Search</h2>'},
+				"header": {"template": '<h2 class="align-center">Byte Flights</h2>'},
 				"aside": {"template": "<default-navbar></default-navbar>"},
 				"main": {"template": `
 				<div>
