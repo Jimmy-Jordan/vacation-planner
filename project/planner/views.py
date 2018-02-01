@@ -52,10 +52,14 @@ class FlightSearchAPIView(View):
 
 class FlightRouteListView(generics.ListCreateAPIView):
 
-	queryset = SavedFlightRoute.objects.all()
+	# queryset = SavedFlightRoute.objects.all()
 	serializer_class = SavedFlightRouteSerializer
 	permission_classes = (IsOwner,)
+	#filter(user=self.request.user)
 
+	def get_queryset(self):
+		user = self.request.user
+		return SavedFlightRoute.objects.filter(user=user)
 	
 	def perform_create(self, serializer):
 		serializer.save(user=self.request.user)
