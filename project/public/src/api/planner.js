@@ -6,7 +6,6 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 export default {
 	flightSearch: function(data){
-		console.log(data, "flight search")
 		return axios({
 			method: 'get',
 			url: 'flights/search',
@@ -20,7 +19,6 @@ export default {
 		});
 	},
 	createSavedRoute: function(data){
-		console.log(data, "saved route")
 		return axios({
 			method: 'post',
 			url: 'flights/savedsearch',

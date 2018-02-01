@@ -61,13 +61,13 @@ class FlightRouteListView(generics.ListCreateAPIView):
 		serializer.save(user=self.request.user)
 	#Might have to adjust the permission so you must be Owner to read
 
-class FlightRouteDepartureListView(generics.ListAPIView):
+class FlightRouteDepartureListView(generics.ListCreateAPIView):
 
 	queryset = DepartureEstimate.objects.all()
 	serializer_class = DepartureEstimateSerializer
 	permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-class FlightRouteReturnListView(generics.ListAPIView):
+class FlightRouteReturnListView(generics.ListCreateAPIView):
 
 	queryset = ReturnEstimate.objects.all()
 	serializer_class = ReturnEstimateSerializer

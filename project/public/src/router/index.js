@@ -39,6 +39,15 @@ const router = new VueRouter({
 				"header": { "template": '<h2 class="align-center">User Profile</h2>'},
 				"aside": { "template": "<default-navbar></default-navbar>"},
 				"main": { "template": "<user-profile></user-profile>" }
+			},
+			beforeEnter: function(to, from, next){
+				if (DataStore.getters.getSavedRoutes.length){
+					next();
+				} else {
+					DataStore.dispatch('loadSavedRoutes').then(function(){
+						next();
+					});
+				}
 			}
 		},
 		{
