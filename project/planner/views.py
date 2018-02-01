@@ -18,7 +18,7 @@ from planner.serializers import (
 	FlightSearchSerializer, SavedFlightRouteSerializer, 
 	DepartureEstimateSerializer, ReturnEstimateSerializer
 )
-from planner.permissions import SearchIsOwnerOrReadOnly
+from planner.permissions import IsOwner
 
 
 
@@ -54,7 +54,7 @@ class FlightRouteListView(generics.ListCreateAPIView):
 
 	queryset = SavedFlightRoute.objects.all()
 	serializer_class = SavedFlightRouteSerializer
-	permission_classes = (SearchIsOwnerOrReadOnly,)
+	permission_classes = (IsOwner,)
 
 	
 	def perform_create(self, serializer):
