@@ -14,6 +14,7 @@ import ReturnFlightSummary from './ReturnFlightSummary.vue';
 import ReturnFlightOptions from './ReturnFlightOptions.vue';
 import UserProfile from './UserProfile.vue';
 import SavedFlightRouteSummary from './SavedFlightRouteSummary.vue';
+import ReturnTicketSummary from './ReturnTicketSummary.vue';
 
 Vue.component(DefaultNavBar.name, DefaultNavBar);
 Vue.component(OutboundFlightResults.name, OutboundFlightResults);
@@ -24,4 +25,4 @@ Vue.component(ReturnFlightSummary.name, ReturnFlightSummary);
 Vue.component(ReturnFlightOptions.name, ReturnFlightOptions);
 Vue.component(UserProfile.name, UserProfile);
 Vue.component(SavedFlightRouteSummary.name, SavedFlightRouteSummary);
-
+Vue.component(ReturnTicketSummary.name, ReturnTicketSummary);

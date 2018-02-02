@@ -241,6 +241,12 @@ const store = new Vuex.Store({
 				return ticket
 			}
 		},
+		getReturnContract: function(state, getters){
+			return function(InBoundOptionId){
+				var ticket = state.tickets[InBoundOptionId]
+				return ticket
+			}
+		},
 		getFullContract: function(state, getters){
 			return function(outboundSegmentid, returnSegmentid){
 				var outboundTicket = state.tickets[outboundSegmentid]

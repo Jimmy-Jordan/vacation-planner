@@ -13,12 +13,12 @@
 			<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
 		</div>
 		
-		<div v-else>
+		<div v-else="this.returnFlight.FlightSegment.length === 1">
 			<p>Destination: {{returnFlight.FlightSegment[0].ArrivalAirport.LocationCode}}</p>
 			<p>Airline: {{returnFlight.FlightSegment[0].OperatedByAirline.CompanyText}}</p>
 <!-- 			<p>Segment ID: {{flight.Segmentid}}</p>
  -->			
-			<ticket-summary v-bind:ticket="getTicket()"></ticket-summary>
+			<return-ticket-summary v-bind:ticket="getTicket()"></return-ticket-summary>
 		</div>
 		<el-button type="primary" plain>Continue</el-button>
 	</el-card>
@@ -30,7 +30,8 @@ export default {
 	name: "return-flight-summary",
 	props:{
 		returnFlight: {type: Object, required: true},
-		outboundFlight: {type: Object, required: true}
+		ticket: {type: Object, required: true}
+		// outboundFlight: {type: Object, required: true}
 	},
 	data: function(){
 		return {
@@ -50,7 +51,7 @@ export default {
 	},
 	methods: {
 		getTicket: function(){
-			var ticket = this.$store.getters.getOutboundContract(this.returnFlight.Segmentid)
+			var ticket = this.$store.getters.getReturnContract(this.returnFlight.Segmentid)
 			return ticket
 		},
 		//When you have a round trip, there are multiple contracts that correspond to a single Segmentid, individual contracts require both outbound and return SegmentId to match the contract.

@@ -38,9 +38,9 @@ export default {
 			perPage: 10
 		}
 	},
-	props: {
-		outboundFlight: {type: Object, required: true}
-	},
+	// props: {
+	// 	outboundFlight: {type: Object, required: true}
+	// },
 	computed: {
 		totalPages: function(){
 			return Math.ceil(this.$store.getters.getReturnFlights.length  / this.perPage);
